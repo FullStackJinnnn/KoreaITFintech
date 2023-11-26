@@ -5,120 +5,276 @@ import java.util.Scanner;
 public class codeuprecord {
 	public static void main(String[] args) {			
 	
-		//1099
-		Scanner scan = new Scanner(System.in);
+//		//1099
+//		Scanner scan = new Scanner(System.in);
+//
+//		int[][] board = new int[10][10];
+//		for (int i=0; i<board.length; i++) {
+//			for(int j=0; j<board[i].length; j++) {
+//				board[i][j] = scan.nextInt();
+//			}
+//		}
+//		int exitcnt = 0;
+//		int antx = 1 ;
+//		for (int i=1; i<board.length; i++) {
+//			for(int j=antx; j<board[i].length; j++) {
+//				if (board[i][j]==1) {
+//					antx = j-1;
+//					break;
+//				}
+//				else if (board[i][j] == 2) {
+//				board[i][j]=9;
+//				exitcnt++;
+//				break;
+//				}
+//				else {
+//				board[i][j]=9;
+//				}
+//			}
+//			if (exitcnt ==1) {
+//				break;
+//			}
+//			
+//		}
+//		
+//		for (int i = 0; i < board.length; i++) {
+//			for (int j = 0; j < board[i].length; j++) {
+//				System.out.print(board[i][j] + " ");
+//			}
+//			System.out.println();
+//		}
+//		
+//		//1098
+//
+//		Scanner scan = new Scanner(System.in);
+//
+//		int w = scan.nextInt();
+//		int h = scan.nextInt();
+//		int[][] board = new int[w][h];
+//		int n = scan.nextInt();
+//		for (int a = 1; a <= n; a++) {
+//			int l = scan.nextInt(); // 길아
+//			int d = scan.nextInt(); // 방향
+//			int row = scan.nextInt(); // 행 시작위치
+//			int column = scan.nextInt(); // 열 시작위치. (왼쪽 위 끝은 1행 1열이다.)
+//
+//			if (d == 0) {
+//				for (int i = 1; i <= l; i++) {
+//					board[row - 1][column - 1 + (i - 1)] = 1;
+//
+//				}
+//			} else {
+//				for (int i = 1; i <= l; i++) {
+//					board[row - 1 + (i - 1)][column - 1] = 1;
+//
+//				}
+//
+//			}
+//		}
+//		for (int i = 0; i < board.length; i++) {
+//			for (int j = 0; j < board[i].length; j++) {
+//				System.out.print(board[i][j] + " ");
+//			}
+//			System.out.println();
+//		}
+//		
+//		//1097
+//
+//		Scanner scan = new Scanner(System.in);
+//
+//		int[][] board = new int[19][19];
+//
+//		for (int i = 0; i < board.length; i++) {
+//			for (int j = 0; j < board[i].length; j++) {
+//				int input = scan.nextInt();
+//				board[i][j] = input;
+//			}
+//		}
+//		int a = scan.nextInt();
+//		
+//		for (int i = 1; i <= a; i++) {
+//			int x = scan.nextInt();
+//			int y = scan.nextInt();
+//			for (int j = 0; j < 19; j++) // 가로 줄 흑<->백 바꾸기
+//			{
+//				if (board[x-1][j] == 0) {
+//					board[x-1][j] = 1;
+//				} else {
+//					board[x-1][j] = 0;
+//				}
+//			}
+//			for (int j = 0; j < 19; j++) // 세로 줄 흑<->백 바꾸기
+//			{
+//				if (board[j][y-1] == 0) {
+//					board[j][y-1] = 1;
+//				} else {
+//					board[j][y-1] = 0;
+//				}
+//			}
+//		}
+//		
+//		for (int i = 0; i < board.length; i++) {
+//			for (int j = 0; j < board[i].length; j++) {
+//			System.out.print(board[i][j] + " ");
+//			}
+//				System.out.println();
+//		}
+//		
+		//-------if else 문 모음-----------------------
+//
+//import java.util.Arrays;
+//import java.util.Scanner;
+//
+//public class Main {
+//	public static void main(String[] args) {
+//		Scanner scan = new Scanner(System.in);
+//
+//		int a = scan.nextInt();
+//		if (a<10) {
+//			System.out.println("small");
+//		}
+//		
+//
+//import java.util.Arrays;
+//import java.util.Scanner;
+//
+//public class Main {
+//	public static void main(String[] args) {
+//		Scanner scan = new Scanner(System.in);
+//
+//		int a = scan.nextInt();
+//		if (a<10) {
+//			System.out.println("small");
+//		} else {
+//			System.out.println("big");
+//		}
+//			
+//
+//import java.util.Arrays;
+//import java.util.Scanner;
+//
+//public class Main {
+//	public static void main(String[] args) {
+//		Scanner scan = new Scanner(System.in);
+//
+//		int a = scan.nextInt();
+//		int b = scan.nextInt();
+//		if (a>b) {
+//			System.out.println(">");
+//		} else if (a<b){
+//			System.out.println("<");
+//		} else {
+//			System.out.println("=");
+//			
+//		}
+//			
+////utf-8로 인코딩해서 출력하는법..? codeup은 utf-8 한글만 지원하는가보다!
+//
+//import java.io.BufferedReader;
+//import java.io.BufferedWriter;
+//import java.io.IOException;
+//import java.io.InputStreamReader;
+//import java.io.OutputStreamWriter;
+//import java.util.Scanner;
+//
+//public class Main {
+//	public static void main(String[] args) throws IOException {
+//		Scanner scan = new Scanner(System.in);
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "utf-8"));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out, "utf-8"));
+//		double a = scan.nextDouble();
+//		double b = scan.nextDouble();
+//	
+//        String S1 = (a%2==0)?"짝수":"홀수";
+//	   	String S2 = (b%2==0)?"짝수":"홀수";
+//	    String S3 = ((a+b)%2==0)?"짝수":"홀수";
+//	    
+//	   	bw.write(S1+"+"+S2+"="+S3);
+//	   	bw.flush();
+//
+//	   	
+//	   	///창문그리기 1008번 번외편
+//	   	
+//	   	
+//
+//import java.io.BufferedReader;
+//import java.io.BufferedWriter;
+//import java.io.IOException;
+//import java.io.InputStreamReader;
+//import java.io.OutputStreamWriter;
+//import java.util.Scanner;
+//
+//public class Main {
+//	public static void main(String[] args) throws IOException {
+//		Scanner scan = new Scanner(System.in);
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "utf-8"));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out, "utf-8"));
+//
+//	
+//        String S1 = "\u250C\u252C\u2510\n\u251C\u253C\u2524\n\u2514\u2534\u2518";
+//
+//	    
+//	   	bw.write(S1);
+//	   	bw.flush();
+//
+//	   	
+//	   	
+//	   	
+//
+//import java.util.Scanner;
+//import java.util.*;
+//import java.io.*;
+//
+//public class Main {
+//	public static void main(String[] args) throws IOException {
+//		Scanner scan = new Scanner(System.in);
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "utf-8"));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out, "utf-8"));
+//		
+//	
+//		double a = scan.nextDouble();
+//		double b = scan.nextDouble();
+//		double c = scan.nextDouble();
+//		double d = a-b+c;
+//		String s1 = "대박";
+//		String s2 = "그럭저럭";
+//		
+//		if (d%10 == 0) {
+//			bw.write(s1);
+//		} else {
+//			bw.write(s2);
+//		}
+//		 	bw.flush();
+//  
+//
+//
+//import java.util.Scanner;
+//import java.util.*;
+//import java.io.*;
+//
+//public class Main {
+//	public static void main(String[] args) throws IOException {
+//		Scanner scan = new Scanner(System.in);
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "utf-8"));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out, "utf-8"));
+//		
+//	
+//		double a = scan.nextDouble();
+//		double b = scan.nextDouble();
+//		double c = scan.nextDouble();
+//		int d = (int)(a+b+c);
+//		String s1 = "대박";
+//		String s2 = "그럭저럭";
+//
+//		if ((d/100) %2 == 0) {
+//			bw.write(s1);
+//		} else {
+//			bw.write(s2);
+//		}	
+//			bw.flush();
+//		
+//  
 
-		int[][] board = new int[10][10];
-		for (int i=0; i<board.length; i++) {
-			for(int j=0; j<board[i].length; j++) {
-				board[i][j] = scan.nextInt();
-			}
-		}
-		int exitcnt = 0;
-		int antx = 1 ;
-		for (int i=1; i<board.length; i++) {
-			for(int j=antx; j<board[i].length; j++) {
-				if (board[i][j]==1) {
-					antx = j-1;
-					break;
-				}
-				else if (board[i][j] == 2) {
-				board[i][j]=9;
-				exitcnt++;
-				break;
-				}
-				else {
-				board[i][j]=9;
-				}
-			}
-			if (exitcnt ==1) {
-				break;
-			}
-			
-		}
-		
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[i].length; j++) {
-				System.out.print(board[i][j] + " ");
-			}
-			System.out.println();
-		}
-		
-		//1098
 
-		Scanner scan = new Scanner(System.in);
-
-		int w = scan.nextInt();
-		int h = scan.nextInt();
-		int[][] board = new int[w][h];
-		int n = scan.nextInt();
-		for (int a = 1; a <= n; a++) {
-			int l = scan.nextInt(); // 길아
-			int d = scan.nextInt(); // 방향
-			int row = scan.nextInt(); // 행 시작위치
-			int column = scan.nextInt(); // 열 시작위치. (왼쪽 위 끝은 1행 1열이다.)
-
-			if (d == 0) {
-				for (int i = 1; i <= l; i++) {
-					board[row - 1][column - 1 + (i - 1)] = 1;
-
-				}
-			} else {
-				for (int i = 1; i <= l; i++) {
-					board[row - 1 + (i - 1)][column - 1] = 1;
-
-				}
-
-			}
-		}
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[i].length; j++) {
-				System.out.print(board[i][j] + " ");
-			}
-			System.out.println();
-		}
-		
-		//1097
-
-		Scanner scan = new Scanner(System.in);
-
-		int[][] board = new int[19][19];
-
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[i].length; j++) {
-				int input = scan.nextInt();
-				board[i][j] = input;
-			}
-		}
-		int a = scan.nextInt();
-		
-		for (int i = 1; i <= a; i++) {
-			int x = scan.nextInt();
-			int y = scan.nextInt();
-			for (int j = 0; j < 19; j++) // 가로 줄 흑<->백 바꾸기
-			{
-				if (board[x-1][j] == 0) {
-					board[x-1][j] = 1;
-				} else {
-					board[x-1][j] = 0;
-				}
-			}
-			for (int j = 0; j < 19; j++) // 세로 줄 흑<->백 바꾸기
-			{
-				if (board[j][y-1] == 0) {
-					board[j][y-1] = 1;
-				} else {
-					board[j][y-1] = 0;
-				}
-			}
-		}
-		
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[i].length; j++) {
-			System.out.print(board[i][j] + " ");
-			}
-				System.out.println();
-		}
-			
 	}
 }

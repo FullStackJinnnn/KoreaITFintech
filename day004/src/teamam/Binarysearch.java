@@ -32,7 +32,7 @@ public class Binarysearch {
 		System.out.println("다음 배열중 찾으시는 값을 입력하세요.");
 		int key = sc.nextInt(); //찾고자 하는 값 입력
 		
-		
+		boolean keyfound = true; //값을 찾았을때 "찾는 값이 없습니다" 를 출력 안하기 위해 체크하는 변수
 		
 		while (lowIdx <= highIdx) {  //low인덱스가 high인덱스보다 작거나 같을때 까지 반복
 			
@@ -41,6 +41,7 @@ public class Binarysearch {
 			int midIdx = (lowIdx + highIdx)/2; 
 			if (key==array[midIdx]) { //원하는값 == 중간값 이면 종료
 				System.out.println("찾으시는 값 : "+array[midIdx]+"\n찾으시는 값의 인덱스 : "+midIdx);
+				keyfound = false; 
 				break;
 			}
 			else if (key>array[midIdx]) { //원하는값이 중간값보다 크면
@@ -50,7 +51,9 @@ public class Binarysearch {
 				highIdx = midIdx-1; // 중간값인덱스 -1을 마지막인덱스에 대입.
 			}
 		}
-		System.out.println("찾는 값이 없습니다.");
+		if (keyfound) {
+			System.out.println("찾는 값이 없습니다.");
+		}
 			
 	}
 }
