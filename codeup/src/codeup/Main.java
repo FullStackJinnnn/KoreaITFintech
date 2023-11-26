@@ -14,14 +14,27 @@ public class Main {
 				board[i][j] = scan.nextInt();
 			}
 		}
-		
-		for (int i=1; i<board.length-1; i++) {
-			for(int j=1; j<board[i].length-1; j++) {
-				if (board[i][j++]==1) {
+		int exitcnt = 0;
+		int antx = 1 ;
+		for (int i=1; i<board.length; i++) {
+			for(int j=antx; j<board[i].length; j++) {
+				if (board[i][j]==1) {
+					antx = j-1;
+					break;
+				}
+				else if (board[i][j] == 2) {
+				board[i][j]=9;
+				exitcnt++;
 				break;
 				}
+				else {
 				board[i][j]=9;
+				}
 			}
+			if (exitcnt ==1) {
+				break;
+			}
+			
 		}
 		
 		for (int i = 0; i < board.length; i++) {
