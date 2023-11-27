@@ -1,5 +1,6 @@
 package codeup;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class codeuprecord {
@@ -273,8 +274,53 @@ public class codeuprecord {
 //		}	
 //			bw.flush();
 //		
-//  
+//
 
+//import java.util.Scanner;
+
+//		Scanner scan = new Scanner(System.in);
+//		String a = scan.next();
+//		int b = scan.nextInt();
+//		int c = scan.nextInt();
+//		
+//
+//
+//	
+//		String str1 = String.format("%02d", b);
+//		String str2 = String.format("%03d", c);
+//		System.out.println(a+str1+str2);
+//	
+//
+//		
+//
+//		Scanner scan = new Scanner(System.in);
+//		int[] arr = new int[3];
+//		for (int i= 0;  i< arr.length; i++) {
+//			arr[i] = scan.nextInt();
+//		}
+//		Arrays.sort(arr);
+//		System.out.println(arr[0]+" "+arr[1]+" "+arr[2]);
+//		
+//
+//
+//		Scanner scan = new Scanner(System.in);
+//		int hr = scan.nextInt();
+//		int m = scan.nextInt();
+//		
+//		if(m<30) {
+//			if(hr==0) {
+//				hr = hr +23;
+//				m = m-30+60;
+//			} else {
+//				hr = hr-1;
+//				m = m-30+60;	
+//			}
+//		}
+//		else {
+//			m = m-30;
+//		}
+//  
+//		System.out.println(hr+" "+m);
 
 	}
 }
