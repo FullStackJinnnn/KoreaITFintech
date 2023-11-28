@@ -21,7 +21,7 @@ public class Main {
 	         hr2--;
 	      }
 	      if(hr2<0) {
-	         hr2+=12;
+	         hr2+=23;
 	      }
 	      System.out.println(hr2+" "+m2);
 	    

@@ -1,7 +1,5 @@
 package class01;
 
-import java.util.Iterator;
-
 public class bubblesort {
 	public static void main(String[] args) {
 
