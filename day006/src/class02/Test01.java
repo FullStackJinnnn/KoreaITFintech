@@ -76,11 +76,9 @@ public class Test01 {
 	}
 		
 
-	public static int stusearch(int[] stuArr, int index) {
-		Scanner sc = new Scanner(System.in);
+	public static void stusearch(int[] stuArr, int index, Scanner sc) {
 		if (index == 0) {
 			System.err.println("입력된 학생 정보가 없습니다. \n학생 정보를 입력하고 다시 찾아주세요");
-			return -1;
 
 		} else {
 			while (true) {
@@ -89,7 +87,7 @@ public class Test01 {
 
 				if (0 < stunum && stunum <= index) {
 					System.out.println("학생 번호 : " + (stunum) + "번\n" + "학생 점수 : " + stuArr[stunum - 1] + " 점");
-					return 0;
+					break;
 				} else {
 					System.out.println("입력하신 학생 번호는 입력되지 않았습니다. 다시 입력하세요");
 					System.out.println("현재까지 입력된 번호: " + "1~" + (index));
@@ -194,7 +192,7 @@ public class Test01 {
 				printrank1(stuArr, index);
 			}
 			else if (action == 4) {
-				stusearch(stuArr, index);
+				stusearch(stuArr, index, sc);
 			} 
 			else if (action == 5) {
 				stuArr = scorechange(stuArr, index);
