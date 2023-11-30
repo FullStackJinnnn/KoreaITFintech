@@ -33,6 +33,8 @@ public class Test01 {
 		// -> 0, null 로 자동초기화 해준다. 개발자가 귀찮아할거라고 생각함
 		String[] datas=new String[3];
 		int[] datas2=new int[3];
+		System.out.println(datas[0]);
+		System.out.println(datas2[0]);
 		 //->null이 들어가있다
 	   //->0이 들어가있다
 		

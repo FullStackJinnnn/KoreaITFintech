@@ -1,5 +1,6 @@
 package class01;
 
+import java.awt.print.Printable;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public class Test01 {
    public static void funcA(Scanner sc,Random rand) {
       System.out.print("정수 입력 >> ");
       int input=sc.nextInt();
-      
+  
       System.out.println("랜덤정수를 생성합니다...");
       int randNum=rand.nextInt(10)+1; // 1~10
       System.out.println("생성된 정수는 ["+randNum+"]입니다.");

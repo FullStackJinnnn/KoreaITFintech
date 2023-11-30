@@ -10,9 +10,9 @@ class Student {
 		//멤버변수 초기화하는 역할 == 생성자
 		//생성자란?
 	
-		name="이름없음";
-		score=0;
-		System.out.println("Student 클래스의 기본 생성자");
+//		name="이름없음";
+//		score=0;
+//		System.out.println("Student 클래스의 기본 생성자");
 	}
 	
 	Student(String n) {
