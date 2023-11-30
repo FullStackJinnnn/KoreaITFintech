@@ -66,7 +66,7 @@ public class Test01 {
    }
 
    public static void main(String[] args) {
-      /*
+      
       Person p1=new Person(inputName());
 
       Person p2=new Person(inputName(),13);
@@ -75,7 +75,7 @@ public class Test01 {
 
       p2.age=p2.inputAge();
       p2.hello();
-      */
+      
 
       
       /*

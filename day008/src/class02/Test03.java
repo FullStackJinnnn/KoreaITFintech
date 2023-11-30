@@ -1,153 +1,143 @@
 package class02;
 
-import java.util.Random;
-import java.util.Scanner;
-
-class Pokemon {
-	int lv;
-	int exp;
+class Circle {
+	double area;
+	// 각각의 객체마다 다른값인가? -> 멤버변수(속성)  각각의 객체마다 다 같은값 -> static 클래스 소속 
+	// 어떠한 클래스의 모든 객체가 다 동일한 멤버변수값을 가질때에 우리는 그 멤버변수를 공유자원이라고 하며 객체와 무관하므로 static을 붙임
+	// static이 붙은건 더이상 멤버변수가 아니다...
+	// 그러므로 멤버변수를 초기화하는 생성자에서 초기화 X
+	// 클래스에서 초기화
+	// 멤버변수가 아니게 됨으로 PI 에 this는 안붙인다.
+	static final double PI= 3.14; // 불변하는 변수는 전부 대문자로 바꾸기... -> 상수
+	// 멤버변수는 객체 (Instacne) 소속 
+	// 모든 원이라면 전부다 3.14
+	// 이러한 멤버변수를 공유자원 이라고 한다.
+	// 객체와 무관하게 
+	//int radius; ? 필요한가용 도 멤버변수로 받자!!!!!
+	int radius;
 	String name;
-
-	Pokemon(String name) {
-		this(name, 5);
+	
+	Circle () {
+		
 	}
-
-	Pokemon(String name, int lv) {
-		this.name = name;
-		this.lv = lv;
-	}
-
-	void expPlus(int ranExp) {
-		this.exp += ranExp;
-	}
-
-	void lvup(int lvcnt) {
-		this.lv += lvcnt;
-	}
-
-	void printInfo() {
-		System.out.println(name + " Lv." + lv + "[" + exp + "/100]입니다.");
-	}
-
-	void gameStart() {
-
-		Random rand = new Random();
-
-		while (true) {
-			int ranExp;
-			int lvcnt;
-			lvcnt = 0;
-			Scanner sc = new Scanner(System.in);
-			System.out.println(this.name + " 레벨업 게입 시작 1 or 0");
-			int ans = sc.nextInt();
-			if (ans == 1) {
-				boolean ranDom = rand.nextBoolean();
-				if (ranDom == false) {
-					System.out.println("꽝! 아무것도 없습니다....");
-				} else {
-					ranExp = rand.nextInt(450) + 50;
-
-					expPlus(ranExp);
-					System.out.println("축하합니다!!!\n얻은 경험치 = " + ranExp);
-
-					if (this.exp > 100) {
-						while (this.exp > 100) {
-							this.exp -= 100;
-							lvcnt++;
-							lvup(lvcnt);
-							if (this.lv > 30) {
-								this.lv = 30;
-								this.exp = 0;
-								break;
-							}
-						}
-						System.out.println("우왕 " + this.name + "레벨 " + lvcnt + "UP!!!!!!!!");
-						printInfo();
-					} else {
-						System.out.println("아쉽게 레벨업은 못했네요");
-						printInfo();
-					}
-
-					System.out.println("");
-					System.out.println("");
-
-					if (this.lv >= 30) {
-						System.out.println("축하합니다!" + this.name + "★☆★☆☆★만렙★☆★☆★☆");
-						System.out.println("진화시키겠습니까 ?! 숫자를 입력하세요 1.네 / 0.아니오");
-						ans = sc.nextInt();
-						if (ans == 1) {
-
-							System.out.println("얼라리..?" + this.name + "의 변화가...!");
-							System.out.print("축하합니다!" + this.name + "는( 은 ) ");
-							if (this.name.equals("피카츄")) {
-								this.name = "라이츄";
-								System.out.println(this.name + "( 으 )로 진화했다!");
-							} else if (this.name.equals("파이리")) {
-								this.name = "리자드";
-								this.lv = 1;
-								this.exp = 0;
-								System.out.println(this.name + "( 으 )로 진화했다!");
-							} else if (this.name.equals("꼬부기")) {
-								this.name = "어니부기";
-								this.lv = 1;
-								this.exp = 0;
-								System.out.println(this.name + "( 으 )로 진화했다!");
-							} else if (this.name.equals("리자드")) {
-								this.name = "리자몽";
-								this.lv = 30;
-								this.exp = 0;
-								System.out.println(this.name + "( 으 )로 진화했다!");
-							} else {
-								this.name = "꼬북왕";
-								this.lv = 30;
-								this.exp = 0;
-								System.out.println(this.name + "( 으 )로 진화했다!");
-							}
-
-							if (this.lv == 1) {
-								continue;
-							}
-						}
-						break;
-					}
-
-				}
-			} else {
-				System.out.println("=====게임종료=====");
-				break;
-			}
+	Circle (String name) {
+		this(name,1);
+			
 		}
+	
+	Circle(int radius) {
+	this("원", radius);
+	}
+	
+	Circle(String name, int radius) {
+	this.name = name;
+	this.area = radius * radius * Circle.PI; //-> this.radius 로 바꾸고 PI는 클래스 소속이기 때문에 CirCle.PI
+		
+	}
+	//메서드는 보통 생성자 다음에 선언
+	void printInfo() {
+		//항상 thio 붙이기.
+		System.out.println(this.name+"는(은) 넓이가 "+area+"입니다.");
+	}
+	
+	
+	void changeRadius(int radius) {
+		this.radius =radius;
+		this.area=this.radius*this.radius*Circle.PI;
 	}
 }
 
+class ColorPoint {
+	int x;
+	int y;
+	String color;
+	
+	ColorPoint() {
+		this(0,0); // 인자가 없을때 인자 2개만 입력해도 44번 라인으로 넘어가서 defualt값을 줄 수 있다.
+		//하드코딩 최소화!!!
+		}
+	
+	ColorPoint(String color) {
+		this(color,0,0);
+	}
+	ColorPoint(int x, int y) {
+		this("검정",x,y);
+	}
+	
+	ColorPoint(String color,int  x,int y) {
+		this.color = color;
+		this.x = x;
+		this.y = y;
+	}
+	
+	void printInfo() {
+		System.out.println(this.color+"색 점은 ("+this.x+","+this.y+")에 있습니다.");
+	}
+	
+	void changeColor(String color) {
+		this.color = color;
+	}
+	
+	void move(int x,int y){
+		this.x+=x;
+		this.y+=y;
+	}
+}
+
+
 public class Test03 {
 	public static void main(String[] args) {
-		Pokemon[] pocs = new Pokemon[3];
-		pocs[0] = new Pokemon("피카츄");
-		pocs[1] = new Pokemon("파이리");
-		pocs[2] = new Pokemon("꼬부기");
-		System.out.println("============현재 가진 포켓몬=============");
-//		for (int i = 0; i < pocs.length; i++) {
-		for (Pokemon datas : pocs) {
-			//pocs[i].printInfo();
+		ColorPoint cp1 = new ColorPoint();
+		ColorPoint cp2 = new ColorPoint(1,2);
+		ColorPoint cp3 = new ColorPoint("분홍");
+		ColorPoint cp4 = new ColorPoint("빨강",3,5) ;
+	
+		cp1.move(10, 5);
+		cp1.changeColor("빨강");
+		
+		
+		cp1.printInfo();
+		cp2.printInfo();
+		cp3.printInfo();
+		cp4.printInfo();
+		
+		
+		System.out.println();
+		System.out.println();
+		
+		Circle c1 = new Circle(10);
+		Circle c2 = new Circle("도넛");
+		Circle c3 = new Circle("피자",12);
+		Circle c4 = new Circle();
+		
+		c1.changeRadius(33);
+		
+		c1.printInfo();
+		c2.printInfo();
+		c3.printInfo();
+		c4.printInfo();
+		c4.printInfo();
+		c4.printInfo();
+		c4.printInfo();
+		c4.printInfo();
+		c4.printInfo();
+		c4.printInfo();
+		
+		System.out.println();
+		System.out.println();
+		
+		ColorPoint[] cpArr = new ColorPoint[5];
+		
+		for (int i=0; i<cpArr.length; i++) {
+			cpArr[i] = new ColorPoint(i,(i+3));
+		}
+		
+		for (ColorPoint datas : cpArr) {
 			datas.printInfo();
 		}
-		System.out.println("====================================");
-		System.out.println("어떤 포켓몬을 레벨업 시킬까요 ?! 숫자로 선택하세요");
-		System.out.println("1. 피카츄 2. 파이리 3. 꼬부기");
-		Scanner sc = new Scanner(System.in);
-		int answer = sc.nextInt();
-		switch (answer) {
-		case 1:
-			pocs[answer - 1].gameStart();
-			break;
-		case 2:
-			pocs[answer - 1].gameStart();
-			break;
-		case 3:
-			pocs[answer - 1].gameStart();
-			break;
-		}
-
+		
+		
+		
+		
 	}
 }
