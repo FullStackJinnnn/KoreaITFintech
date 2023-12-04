@@ -275,6 +275,7 @@ public class codeuprecord {
 //			bw.flush();
 //		
 //
+<<<<<<< HEAD
 
 //import java.util.Scanner;
 
@@ -321,6 +322,189 @@ public class codeuprecord {
 //		}
 //  
 //		System.out.println(hr+" "+m);
+=======
+
+//import java.util.Scanner;
+
+//		Scanner scan = new Scanner(System.in);
+//		String a = scan.next();
+//		int b = scan.nextInt();
+//		int c = scan.nextInt();
+//		
+//
+//
+//	
+//		String str1 = String.format("%02d", b);
+//		String str2 = String.format("%03d", c);
+//		System.out.println(a+str1+str2);
+//	
+//
+//		
+//
+//		Scanner scan = new Scanner(System.in);
+//		int[] arr = new int[3];
+//		for (int i= 0;  i< arr.length; i++) {
+//			arr[i] = scan.nextInt();
+//		}
+//		Arrays.sort(arr);
+//		System.out.println(arr[0]+" "+arr[1]+" "+arr[2]);
+//		
+//
+//
+//		Scanner scan = new Scanner(System.in);
+//		int hr = scan.nextInt();
+//		int m = scan.nextInt();
+//		
+//		if(m<30) {
+//			if(hr==0) {
+//				hr = hr +23;
+//				m = m-30+60;
+//			} else {
+//				hr = hr-1;
+//				m = m-30+60;	
+//			}
+//		}
+//		else {
+//			m = m-30;
+//		}
+//  
+//		System.out.println(hr+" "+m);
+//		import java.util.Arrays;
+//		import java.util.Scanner;
+//
+//		public class Main {
+//			public static void main(String[] args) {
+//				Scanner scan = new Scanner(System.in);
+//				int a = scan.nextInt();
+//				int b = 0;
+//				int c = 0;
+//				
+//				b = a/10;
+//				c = a%10;
+//				
+//				a = (c*10 + b) * 2 ;
+//				if (a>100) {
+//					a -= 100;
+//				}
+//				if (a>50) {
+//				System.out.println(a+"\nOH MY GOD");
+//				} else {
+//				System.out.println(a+"\nGOOD");
+//				}
+//		
+//		import java.io.BufferedReader;
+//		import java.io.BufferedWriter;
+//		import java.io.IOException;
+//		import java.io.InputStreamReader;
+//		import java.io.OutputStreamWriter;
+//		import java.util.Scanner;
+//		
+//		public class Main {
+//			public static void main(String[] args) throws IOException {
+//				Scanner scan = new Scanner(System.in);
+//				BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "utf-8"));
+//				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out, "utf-8"));
+//				double a = scan.nextDouble();
+//		
+//			
+//		        String S1 = (a>0)? "양수": ((a<0)? "음수":"0");
+//		
+//			    
+//			   	bw.write(S1);
+//			   	bw.flush();
+//	
+//	
+//		import java.util.Arrays;
+//		import java.util.Scanner;
+//		
+//		public class Main {
+//			public static void main(String[] args) {
+//				Scanner scan = new Scanner(System.in);
+//				int a = scan.nextInt();	
+//			    switch (a/10) {
+//			        case 10: 
+//			        case 9: System.out.println("A"); break;
+//			        case 8: System.out.println("B"); break;
+//			        case 7: System.out.println("C"); break;
+//			        case 6: System.out.println("D"); break;
+//			        default: System.out.println("F");
+//			   
+//
+//
+//		import java.util.Scanner;
+//		
+//		public class Main {
+//			public static void main(String[] args) {
+//				Scanner scan = new Scanner(System.in);
+//				int a = scan.nextInt();
+//			if(a/10!=1){	
+//				if (a%10==1) {
+//					System.out.println(a+"st");
+//				}
+//				else if (a%10==2) {
+//					System.out.println(a+"nd");
+//				}
+//				else if (a%10==3) {
+//					System.out.println(a+"rd");
+//				}
+//			else {
+//					System.out.println(a+"th");
+//				}                
+//			}	else {
+//					System.out.println(a+"th");
+//				}
+//		
+//		import java.io.BufferedReader;
+//		import java.io.BufferedWriter;
+//		import java.io.IOException;
+//		import java.io.InputStreamReader;
+//		import java.io.OutputStreamWriter;
+//		import java.util.Scanner;
+//		import java.util.Arrays;
+//		import java.util.Scanner;
+//		
+//		public class Main {
+//			public static void main(String[] args) throws IOException {
+//				Scanner scan = new Scanner(System.in);
+//				BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "utf-8"));
+//				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out, "utf-8"));
+//				int a = scan.nextInt();
+//				int b = scan.nextInt();
+//				int c = scan.nextInt();
+//				int d = scan.nextInt();
+//				int e = a+b+c+d;
+//				String s1 ="";
+//				switch (e) {
+//				case 0 : s1 = "모";
+//				bw.write(s1);
+//				bw.flush();
+//				break;
+//			
+//				case 1 : s1 = "도";
+//				bw.write(s1);
+//				bw.flush();
+//				break;
+//				case 2 : s1 = "개";
+//				bw.write(s1);
+//				bw.flush();
+//				break;
+//				case 3 : s1 = "걸";
+//				bw.write(s1);
+//				bw.flush();
+//				break;
+//				case 4 :s1 = "윷";
+//				bw.write(s1);
+//				bw.flush();
+//				break;
+//				}
+//		
+//	}
+//}
+
+		
+		
+		
+>>>>>>> de6de6d2a328fe86fd70eaf4c6b0304a7b1cac43
 
 	}
 }
