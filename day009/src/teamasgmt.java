@@ -78,7 +78,6 @@
 //}
 //
 //
-<<<<<<< HEAD
 //			음식먹기 start -> 사람에너지 1~50랜덤증가
 //			1년후 -> 나이 1 증가
 
@@ -138,12 +137,10 @@
 
 
 
-=======
 //
 //
 //
 //
->>>>>>> 1b706609a1e921e2a67018c313c8237924019636
 //
 //public class teamasgmt {
 //	
@@ -233,7 +230,6 @@ class Plant extends LivingThings {
 	}
 
 }
-
 class Person extends LivingThings {
 	int age;
 
@@ -312,7 +308,7 @@ public class teamasgmt {
 			}
 			System.out.println();
 		}
-
+	}
 }
 //
 //import java.util.Random;
@@ -433,4 +429,3 @@ public class teamasgmt {
 //
 //	}
 //}
->>>>>>> 1b706609a1e921e2a67018c313c8237924019636

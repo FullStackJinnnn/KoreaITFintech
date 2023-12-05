@@ -275,9 +275,6 @@ public class codeuprecord {
 //			bw.flush();
 //		
 //
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 //import java.util.Scanner;
 
@@ -324,11 +321,6 @@ public class codeuprecord {
 //		}
 //  
 //		System.out.println(hr+" "+m);
-=======
-=======
->>>>>>> e1b5712c8e267e5d08830e2aae781c053e520706
-=======
->>>>>>> 1b706609a1e921e2a67018c313c8237924019636
 
 //import java.util.Scanner;
 
@@ -510,13 +502,6 @@ public class codeuprecord {
 		
 		
 		
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> de6de6d2a328fe86fd70eaf4c6b0304a7b1cac43
-=======
-=======
-=======
->>>>>>> 1b706609a1e921e2a67018c313c8237924019636
 
 //import java.util.Scanner;
 
@@ -563,7 +548,6 @@ public class codeuprecord {
 //		}
 //  
 //		System.out.println(hr+" "+m);
->>>>>>> e1b5712c8e267e5d08830e2aae781c053e520706
 
 //// 1254
 //		import java.util.Scanner;
