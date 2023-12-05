@@ -277,6 +277,7 @@ public class codeuprecord {
 //
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 //import java.util.Scanner;
 
@@ -326,6 +327,8 @@ public class codeuprecord {
 =======
 =======
 >>>>>>> e1b5712c8e267e5d08830e2aae781c053e520706
+=======
+>>>>>>> 1b706609a1e921e2a67018c313c8237924019636
 
 //import java.util.Scanner;
 
@@ -508,9 +511,12 @@ public class codeuprecord {
 		
 		
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> de6de6d2a328fe86fd70eaf4c6b0304a7b1cac43
 =======
 =======
+=======
+>>>>>>> 1b706609a1e921e2a67018c313c8237924019636
 
 //import java.util.Scanner;
 
@@ -559,5 +565,108 @@ public class codeuprecord {
 //		System.out.println(hr+" "+m);
 >>>>>>> e1b5712c8e267e5d08830e2aae781c053e520706
 
+//// 1254
+//		import java.util.Scanner;
+//
+//		public class Main {
+//			public static void main(String[] args) {
+//				
+//				Scanner sc = new Scanner(System.in) ;
+//				String a = sc.next();
+//				String b = sc.next();
+//				char c = a.charAt(0);
+//				char d = b.charAt(0);
+//				for (int i=c; i<=d; i++) {
+//					System.out.print((char)i+" ");
+//				}
+//			}
+//		}
+//		
+//// 1255
+//		import java.util.Scanner;
+//
+//		public class Main {
+//			public static void main(String[] args) {
+//
+//				Scanner sc = new Scanner(System.in);
+//				Double a = sc.nextDouble();
+//				Double b = sc.nextDouble();
+//				for (Double i = a; i <= b; i = i + 0.01) {
+//					System.out.printf("%.02f",i);
+//					System.out.print(" ");
+//
+//				}
+//
+//			}
+//		}
+//// 1261
+//		package codeup;
+//
+//		import java.util.Scanner;
+//
+//		public class Main {
+//			public static void main(String[] args) {
+//
+//				Scanner sc = new Scanner(System.in);
+//				for (int i = 0; i <= 9; i ++) {
+//					int a = sc.nextInt();
+//					if (a%5==0) {
+//						System.out.println(a);
+//						break;
+//				}
+//					else if (i==9) {
+//						System.out.println(0);
+//					}
+//				}
+//
+//			}
+//		}
+//// 1270
+//		import java.util.Scanner;
+//
+//		public class Main {
+//			public static void main(String[] args) {
+//
+//				Scanner sc = new Scanner(System.in);
+//				int a = sc.nextInt();
+//				int cnt = 0;
+//				for (int i = 0; i <= a; i++) {
+//					if (i % 10 == 1) {
+//						cnt++;
+//					}
+//				}
+//				System.out.println(cnt);
+//			}
+//		}
+//// 1272
+//		
+//		package codeup;
+//
+//		import java.util.Scanner;
+//
+//		public class Main {
+//			public static void main(String[] args) {
+//
+//				Scanner sc = new Scanner(System.in);
+//				int i =2;
+//				int answer =0;
+//				while ( i > 0) {
+//					int a = sc.nextInt();
+//					int cnt = 0;
+//					if (a % 2 != 0) {
+//						while (a > 0) {
+//							a -= 2;
+//							cnt++;
+//						}
+//						a = cnt;
+//					} else {
+//						a = a / 2 * 10;
+//					}
+//					answer += a;
+//					i--;
+//				}
+//				System.out.println(answer);
+//			}
+//		}\
 	}
 }
