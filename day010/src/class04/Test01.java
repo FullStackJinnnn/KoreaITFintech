@@ -50,7 +50,7 @@ class SamsungTV implements TVinterface {
 
 class SamsungMiniTV extends SamsungTV {
 	Random rand = new Random();
-	int battery = rand.nextInt(19) + 51;
+	int battery = rand.nextInt(21) + 50;
 
 	SamsungMiniTV(String userName) {
 		super(userName, 1);

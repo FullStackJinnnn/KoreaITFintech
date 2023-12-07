@@ -1,21 +1,22 @@
 package itacademy;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int hr = sc.nextInt();
-		int min = sc.nextInt();
-		min -= 45;
-		if (min<0) {
-			hr--;
-			min +=60;
+		int a = sc.nextInt();
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		ArrayList<Integer> list2 = new ArrayList<Integer>();
+		for (int i = 0; i < a; i++) {
+			list.add(sc.nextInt());
 		}
-		if (hr<0) {
-			hr +=24;
+		a = sc.nextInt();
+		for (int i = 0; i < a; i++) {
+			list2.add(sc.nextInt());
 		}
-		System.out.println(hr + " "+ min);
 		
+
 	}
 }
