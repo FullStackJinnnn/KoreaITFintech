@@ -1,6 +1,7 @@
 package itacademy;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
@@ -16,7 +17,14 @@ public class Main {
 		for (int i = 0; i < a; i++) {
 			list2.add(sc.nextInt());
 		}
-		
+		Iterator<Integer> iterator = list2.iterator();
+		while (iterator.hasNext()) {
+		   int b = iterator.next();
+		   if (list.contains(b)) {
+			   list2.set(iterator., 1);
+		   }
+		}
+	
 
 	}
 }
