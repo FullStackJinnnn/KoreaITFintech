@@ -166,6 +166,7 @@ public class Test01 {
                         break;
                      }
                   }
+                  
                   if(!flag) {
                      System.out.println("없는번호입니다...");
                      continue;
