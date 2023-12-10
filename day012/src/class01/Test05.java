@@ -60,10 +60,5 @@ public class Test05 {
 		
 		System.out.println(100+"/"+datas.get(num-1)+"="+result);
 
-
-
-
-
-
 	}
 }
