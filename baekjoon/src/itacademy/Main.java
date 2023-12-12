@@ -1,47 +1,61 @@
 package itacademy;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.io.OutputStreamWriter;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.StringTokenizer;
 
 public class Main {
-	public static void main(String[] args) throws Exception {
-		long beforeTime = System.currentTimeMillis();
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder sb = new StringBuilder();
+	private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	private static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+	static int a;
+	static int b;
 
-		String a = br.readLine();
-		String[] strs = br.readLine().split(" ");
-		Set<String> set = new HashSet<String>(Arrays.asList(strs));
-		a = br.readLine();
-		strs = br.readLine().split(" ");
-		List<String> list = new ArrayList<String>(Arrays.asList(strs));
-		Iterator<String> iter = set.iterator(); // Iterator 사용
-		for (int i = 0; i < list.size(); i++) {
-			int cnt = 0;
-			while (iter.hasNext()) {
-				String b = iter.next();
-				if (list.get(i).equals(b)) {
-					sb.append("1").append(" ");
-					break;
-				}
-				cnt++;
-			}
-			iter = set.iterator();
-			if (cnt == set.size()) {
-				sb.append("0").append(" ");
-			}
+	public static void main(String[] args) throws IOException {
+
+		a = Integer.parseInt(br.readLine());
+		int[] arr = new int[a];
+		StringTokenizer stringtoken = new StringTokenizer(br.readLine());
+		for (int i = 0; i < a; i++) {
+			arr[i] = Integer.parseInt(stringtoken.nextToken());
 		}
 
-		System.out.println(sb);
-		long afterTime = System.currentTimeMillis(); 
-		long secDiffTime = (afterTime - beforeTime)/1000;
-		System.out.println("시간차이(m) : "+secDiffTime);
-	}
+		Arrays.sort(arr);
 
+		b = Integer.parseInt(br.readLine());
+		stringtoken = new StringTokenizer(br.readLine());
+		for (int i = 0; i < b; i++) {
+			int num = Integer.parseInt(stringtoken.nextToken());
+			int lowIdx = 0;
+			int highIdx = a -1;
+			int midIdx = 0;
+			boolean keynotfound = true;
+			while (lowIdx <= highIdx) {
+
+				midIdx = (lowIdx + highIdx) / 2;
+//				if (i == arr[midIdx]) {
+//					bw.write("1 ");
+//					keynotfound = false;
+//					break;
+				if (num > arr[midIdx]) {
+					lowIdx = midIdx + 1;
+				} else if (num < arr[midIdx]) {
+					highIdx = midIdx - 1;
+				} else {
+					bw.write("1 ");
+					keynotfound = false;
+					break;
+				}
+			}
+			if (keynotfound) {
+				bw.write("0 ");
+			}
+		}
+		bw.close();
+		br.close();
+
+	}
 }
