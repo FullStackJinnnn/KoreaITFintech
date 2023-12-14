@@ -6,7 +6,15 @@ public class ProductDTO {
 	private String name;
 	private int price;
 	private int cnt;
+	private int addCnt;
 	
+	public int getAddCnt() {
+		return addCnt;
+	}
+	public void setAddCnt(int addCnt) {
+		this.addCnt = addCnt;
+	}
+
 	private String searchConditon; // JAVA 로직에서만 사용하는 변수
 	
 	// 웹 개발에서는,

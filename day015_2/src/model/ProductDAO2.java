@@ -25,7 +25,28 @@ public class ProductDAO2 {
 	}
 
 	public ArrayList<ProductDTO> selectAll(ProductDTO productDTO) {
-		return datas;
+
+		if (productDTO.getSearchConditon() == null) {
+			// 전체출력
+			return this.datas;
+		} else if (productDTO.getSearchConditon().equals("이름검색")) {
+			ArrayList<ProductDTO> datas = new ArrayList<ProductDTO>();
+			for (int i = 0; i < this.datas.size(); i++) {
+				if (this.datas.get(i).getName().contains(productDTO.getName())) {
+					datas.add(this.datas.get(i));
+				}
+			}
+			return datas;
+		} else if (productDTO.getSearchConditon().equals("가격검색")) {
+			ArrayList<ProductDTO> datas = new ArrayList<ProductDTO>();
+			for (int i = 0; i < this.datas.size(); i++) {
+				if (this.datas.get(i).getPrice() >= productDTO.getPrice()) {
+					datas.add(this.datas.get(i));
+				}
+			}
+			return datas;
+		}
+		return null;
 	}
 
 	public ProductDTO selectOne(ProductDTO productDTO) {
@@ -63,12 +84,14 @@ public class ProductDAO2 {
 
 	public boolean update(ProductDTO productDTO) {
 		if (productDTO.getSearchConditon().equals("구매")) {
-			productDTO.setCnt(productDTO.getCnt() - 1);
+			// productDTO.setCnt(productDTO.getCnt() - 1);
 		} else if (productDTO.getSearchConditon().equals("재고변경")) {
-			productDTO.setCnt(productDTO.getCnt());
-		}
-
-		else {
+			// productDTO.setCnt(productDTO.getCnt());
+		} else if (productDTO.getSearchConditon().equals("재고추가")) {
+			// productDTO.setCnt(productDTO.getCnt() + productDTO.getAddCnt());
+		} else if (productDTO.getSearchConditon().equals("가격변경")) {
+			// productDTO.setPrice(productDTO.getPrice());
+		} else {
 			return false;
 		}
 		return true;
@@ -88,6 +111,5 @@ public class ProductDAO2 {
 		}
 		return true;
 	}
-	
 
 }
