@@ -9,6 +9,23 @@ public class MemberDTO {
 	private String mid; // PK
 	private String mpw;
 	private String name;
+	private String mpwCheck;
+	
+	
+	public String getMpwCheck() {
+		return mpwCheck;
+	}
+	public void setMpwCheck(String mpwCheck) {
+		this.mpwCheck = mpwCheck;
+	}
+	private String searchCondition;
+	
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
 	public String getMid() {
 		return mid;
 	}

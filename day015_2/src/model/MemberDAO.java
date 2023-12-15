@@ -14,24 +14,72 @@ public class MemberDAO {
 		admin.setName("관리자");
 		datas.add(admin);
 	}
-
+	
+	
 	public ArrayList<MemberDTO> selectAll(MemberDTO memberDTO) {
 		return datas;
 	}
 
 	public MemberDTO selectOne(MemberDTO memberDTO) {
-		boolean flag = false;
-		int i;
-		for (int i = 0; i < datas.size(); i++) {
-			if (!datas.get(i).getMid().equals(memberDTO.getMid())) {
-				flag = true;
-				break;
+		if (memberDTO.getSearchCondition().equals("ID중복검사")) {
+			boolean flag = false;
+			int i;
+			for (i = 0; i < datas.size(); i++) {
+				if (datas.get(i).getMid().equals(memberDTO.getMid())) {
+					flag = true;
+					break;
+				}
 			}
-			if (flag) {
+			if (!flag) {
 				return null;
 			}
+
+			MemberDTO data = new MemberDTO();
+			data.setMid(this.datas.get(i).getMid());
+			data.setMpw(this.datas.get(i).getMpw());
+			data.setName(this.datas.get(i).getName());
+			return data; // data를 new 하는 이유 ? 원본이 변경되는것을 막기위함.
+
+		} else if (memberDTO.getSearchCondition().equals("로그인")) {
+
+			boolean flag = false;
+			int i;
+			for (i = 0; i < datas.size(); i++) {
+				if (this.datas.get(i).getMid().equals(memberDTO.getMid())
+						&& this.datas.get(i).getMpw().equals(memberDTO.getMpw())) {
+					flag = true;
+					break;
+				}
+			}
+			if (!flag) {
+				return null;
+			}
+			MemberDTO data = new MemberDTO();
+			data.setMid(this.datas.get(i).getMid());
+			data.setMpw(this.datas.get(i).getMpw());
+			data.setName(this.datas.get(i).getName());
+			return data; // data를 new 하는 이유 ? 원
+
+		} else if (memberDTO.getSearchCondition().equals("비밀번호변경")) {
+
+			boolean flag = false;
+			int i;
+			for (i = 0; i < datas.size(); i++) {
+				if (this.datas.get(i).getMid().equals(memberDTO.getMid())) {
+					if (this.datas.get(i).getMpw().equals(memberDTO.getMpw())) {
+						flag = true;
+						break;
+					}
+				}
+			}
+			if (!flag) {
+				return null;
+			}
+			MemberDTO data = new MemberDTO();
+			data.setMpw(this.datas.get(i).getMpw());
+			return data; // data를 new 하는 이유 ? 원
 		}
-		return this.datas.get(i);
+		return null;
 	}
 	// 만약, null이 반환되면 ID가 중복되지않음!
 	// null이 아닌것이 반환되면 회원이 있는것이므로 회원가입 불가능...
@@ -51,9 +99,41 @@ public class MemberDAO {
 	}
 
 	public boolean update(MemberDTO memberDTO) {
-		MemberDTO data = new MemberDTO();
+		if (memberDTO.getSearchCondition() == null) {
+			MemberDTO data = new MemberDTO();
+			boolean flag = false;
+			int i;
+			for (i = 0; i < datas.size(); i++) {
+				if (this.datas.get(i).getMid().equals(memberDTO.getMid())
+						&& this.datas.get(i).getMpw().equals(memberDTO.getMpw())) {
+					flag = true;
+					break;
+				}
+			}
+			if (!flag) {
+				return false;
+			}
+			this.datas.remove(i);
+		}
 
-		return false;
+		else if (memberDTO.getSearchCondition().equals("비밀번호변경")) {
+			boolean flag = false;
+			int i;
+			for (i = 0; i < datas.size(); i++) {
+
+				if (memberDTO.getMpwCheck().equals(memberDTO.getMpw())) {
+					flag = true;
+					break;
+
+				}
+			}
+			if (!flag) {
+				return false;
+			}
+			this.datas.get(i).setMpw(memberDTO.getMpw());
+			System.out.println("로그!!!!!!!");
+		}
+		return true;
 	}
 
 	public boolean delete(MemberDTO memberDTO) {
