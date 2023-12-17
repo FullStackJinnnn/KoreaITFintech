@@ -203,7 +203,7 @@ public class Ctrl4 {
 				String mid;
 				while (true) {
 					mid = memberView.inputMemberID();
-
+					
 					memberDTO.setMid(mid);
 					memberDTO.setSearchCondition("ID중복검사");
 					memberDTO = memberDAO.selectOne(memberDTO);
@@ -277,8 +277,8 @@ public class Ctrl4 {
 				if (user == null) {
 					continue;
 				}
-				MemberDTO memberDTO = new MemberDTO();
-				memberDTO.setMid(user.getMid());
+			//	MemberDTO memberDTO = new MemberDTO();
+			//	memberDTO.setMid(user.getMid());
 				memberDAO.delete(user);
 				user = null; // 로그아웃도 시켜주어야함!
 				memberView.printTrue();

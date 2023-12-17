@@ -46,6 +46,6 @@ public class MemberDTO {
 	}
 	@Override
 	public String toString() {
-		return "ID =" + mid + "PW =" + mpw + ", 이름 =" + name + "]";
+		return "[ID =" + mid + " PW =" + mpw + " 이름 =" + name + "]";
 	}
 }

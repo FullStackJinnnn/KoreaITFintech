@@ -14,8 +14,7 @@ public class MemberDAO {
 		admin.setName("관리자");
 		datas.add(admin);
 	}
-	
-	
+
 	public ArrayList<MemberDTO> selectAll(MemberDTO memberDTO) {
 		return datas;
 	}
@@ -27,6 +26,7 @@ public class MemberDAO {
 			for (i = 0; i < datas.size(); i++) {
 				if (datas.get(i).getMid().equals(memberDTO.getMid())) {
 					flag = true;
+					System.out.println("null을...못넘겨주네!!!");
 					break;
 				}
 			}
@@ -34,11 +34,11 @@ public class MemberDAO {
 				return null;
 			}
 
-			MemberDTO data = new MemberDTO();
-			data.setMid(this.datas.get(i).getMid());
-			data.setMpw(this.datas.get(i).getMpw());
-			data.setName(this.datas.get(i).getName());
-			return data; // data를 new 하는 이유 ? 원본이 변경되는것을 막기위함.
+//			MemberDTO data = new MemberDTO();
+//			data.setMid(this.datas.get(i).getMid());
+//			data.setMpw(this.datas.get(i).getMpw());
+//			data.setName(this.datas.get(i).getName());
+			return this.datas.get(i); // data를 new 하는 이유 ? 원본이 변경되는것을 막기위함.
 
 		} else if (memberDTO.getSearchCondition().equals("로그인")) {
 
@@ -99,32 +99,13 @@ public class MemberDAO {
 	}
 
 	public boolean update(MemberDTO memberDTO) {
-		if (memberDTO.getSearchCondition() == null) {
-			MemberDTO data = new MemberDTO();
+		if (memberDTO.getSearchCondition().equals("비밀번호변경")) {
 			boolean flag = false;
 			int i;
 			for (i = 0; i < datas.size(); i++) {
-				if (this.datas.get(i).getMid().equals(memberDTO.getMid())
-						&& this.datas.get(i).getMpw().equals(memberDTO.getMpw())) {
-					flag = true;
-					break;
-				}
-			}
-			if (!flag) {
-				return false;
-			}
-			this.datas.remove(i);
-		}
-
-		else if (memberDTO.getSearchCondition().equals("비밀번호변경")) {
-			boolean flag = false;
-			int i;
-			for (i = 0; i < datas.size(); i++) {
-
 				if (memberDTO.getMpwCheck().equals(memberDTO.getMpw())) {
 					flag = true;
 					break;
-
 				}
 			}
 			if (!flag) {
