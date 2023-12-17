@@ -8,7 +8,6 @@ public class Test01 {
 		System.out.printf("%05d\n", 1);
 		System.out.printf("%.3f", 0.123456);
 		float pie = 3.1415f;
-		System.out.println(arr);
 	}
 	
 }
