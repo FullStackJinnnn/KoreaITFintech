@@ -14,7 +14,7 @@ public class DogfoodDAO {
 	private static final String SELECTALL = "SELECT * FROM DOGFOOD ORDER BY BID ASC";
 	private static final String SELECTONE = "SELECT * FROM DOGFOOD WHERE PRICE=?";
 
-	private static final String INSERT = "INSERT INTO DOGFOOD (BID, TITLE, PRICE) 0.VALUES ((SELECT NVL(MAX(BID), 10) + 1 FROM DOGFOOD), ?, ?)";
+	private static final String INSERT = "INSERT INTO DOGFOOD (BID, TITLE, PRICE) VALUES ((SELECT NVL(MAX(BID), 10) + 1 FROM DOGFOOD), ?, ?)";
 	private static final String UPDATE = "";
 	private static final String DELETE = "";
 

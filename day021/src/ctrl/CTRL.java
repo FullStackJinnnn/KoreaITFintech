@@ -40,10 +40,14 @@ public class CTRL {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		
 		Elements elems = doc.select("strong.price");
-		Elements elems2 = doc.select("div.flex-contents");
-	
+		Elements elems2 = doc.getElementsByClass("flex-contents");
+		
+			
+		for (Element e : elems2) {
+		System.out.println(e);
+		}
 		Iterator<Element> itr = elems.iterator();
 		Iterator<Element> itr2 = elems2.iterator();
 		
@@ -63,15 +67,15 @@ public class CTRL {
 			else if (action == 3) {
 				while (itr.hasNext()) {
 					String str = itr.next().text();
-					String str2 = itr2.next().text();
-					String str3;
-					str3 = str2.substring(0,30);
+					String str2 = itr2.next().getElementsByTag("span").get(0).text();
+				//	str2 = str2.substring(0,20);
 					bDTO.setPrice(str);
 //					System.out.println(str3);
 //					bDTO.setTitle("A");
-					bDTO.setTitle(str3);
+					if (str2.length()<25) {
+					bDTO.setTitle(str2);
 					bDAO.insert(bDTO);
-					
+					}
 //					System.out.println(str);
 //					System.out.println(str2);
 				}
