@@ -25,16 +25,32 @@ public class CTRL {
 	}
 
 	
-
 	public void start() {
 		while(true) {
-			logoutVIEW.printMenu();
-			logoutVIEW.inputUid();
-			logoutVIEW.inputName();
-			logoutVIEW.inputNickName();
-			logoutVIEW.inputPhoneNumber();
-			logoutVIEW.inputBirhday();
-			logoutVIEW.inputAddress();
+//			logoutVIEW.printMenu();
+//			commonVIEW.printMenu();
+			
+			loginVIEW.printMenu();
+			commonVIEW.printMenu();
+			
+//			
+//			loginVIEW.printUserInfo();
+//			int action = commonVIEW.inputNum("번호를 입력해주세요", 1, 13);
+//			if (action == 10) {
+//				loginVIEW.printBoardUpdate();
+//				commonVIEW.inputNum("번호를 입력해주세요", 1, 2);
+//			} else if (action == 11) {
+//				loginVIEW.printBoardUpdate();
+//				commonVIEW.inputNum("번호를 입력해주세요", 1, 2);
+//			}
+//			logoutVIEW.printMenu();
+//			logoutVIEW.inputUid();
+//			logoutVIEW.inputName();
+//			logoutVIEW.inputNickName();
+//			logoutVIEW.inputPhoneNumber();
+//			logoutVIEW.inputBirhday();
+//			logoutVIEW.inputAddress();
+			break;
 		}
 	}
 }

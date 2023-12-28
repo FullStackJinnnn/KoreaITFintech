@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>내부 스타일시트 vs 외부 스타일시트</title>
+	<style>
+		.gnb, li{
+			border: 2px solid lightblue; 
+			color: green;
+	
+		}
+
+		
+		
+	</style>
+</head>
+<body>
+	
+	<div id="wrapper">
+		<div class="box"> <!--여러개존재할수있어서클래스시용 -->
+			<h1> 타이틀 01</h1>
+			<u1 class="gnb"> <!--글로벌네비게이션바-->
+				<li>베스트 상품</li>
+				<li>신상품</li>
+				<li>고객센터</li>
+			</u1>
+		</div>
+		<div class="box">	
+			<h1>타이틀 02</h1>
+			<ul class="lnb">
+				<li>외투</li>
+				<li>후드티</li>
+				<li>바지</li>
+				<li>운동화</li>
+			</ul>
+		</div>
+	</div>
+
+</body>
+</html>
