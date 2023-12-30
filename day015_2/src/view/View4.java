@@ -119,7 +119,7 @@ public class View4 {
 		for (ProductDTO data : datas) {
 			if (data.getCnt() <= 0) {
 				System.out.println("재고없음!");
-				continue;
+			//	continue;
 			}
 			System.out.println(data);
 		}
