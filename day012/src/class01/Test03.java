@@ -25,7 +25,6 @@ public class Test03 {
 			System.out.println("로그 01");
 
 		} catch(Exception e) {
-			
 			num=100;
 			// 정수값이 아닌값이 입력되면,
 			// 100으로 값 저장
