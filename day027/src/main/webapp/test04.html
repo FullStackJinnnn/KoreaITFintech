@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 등록</title>
+<style>
+	#box {
+		background-color: lightcoral;
+		cursor: pointer;
+		width: 150px;
+		
+	}
+</style>
+</head>
+<body>
+	<!--window.onload -> 화면이 다 실행된 다음에 function()이 실행되기 때문에
+	box 클릭을 가져올 수 있다.-->
+<!--	getelement로 선택할수 없는 요소는 qerySelector 로 선택할수있다
+--> <!--스크립트는 하이픈표기 절때안한다 헷갈린다-->
+<script>
+	window.onload = function(){
+		var box=document.getElementById('box');
+		box.onclick = function() {
+			window.open('https://www.naver.com/');
+		};
+		
+		var list=document.querySelectorAll('#box1 > ul > li');
+		list[0].style.backgroundColor='lightblue';
+		list[1].style.backgroundColor='lightblue';
+	};
+</script>
+
+<div id="box">클릭</div>
+
+<hr>
+
+<div id="box1">
+	<ul>
+		<li>베스트상품</li>
+		<li>신상품</li>
+	</ul>
+</div>
+
+<div id="box2">
+	<ul>
+		<li>후드티</li>
+		<li>반팔티</li>
+		<li>운동화</li>
+	</ul>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>이벤트 등록 02</title>
+	
+	<style>
+		div {
+			width: 10px;
+			background-color:red;
+			position: fixed;
+			left: 200px;
+			top: 10px;
+			height: 10px;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		//addElem함수인데
+		//아이디가 btn인애 받아서
+		//on click에 연결할그야
+		//연결한다는건 요소를 함수에 추가한다는것
+		function addElem() {
+			var btn = document.getElementById('btn');
+		
+			function func() {
+				var div=document.createElement('div');
+				//하나의 엘리먼트 단위를 노드라고 표현한다~
+		 		//링크를 주려면 a태그가 필요하고
+				//a태그는 안에 텍스트를 가지니까 노드를 만들었다
+				//문자와 하이퍼레퍼런스를 둘다가져야한다~
+				var a=document.createElement('a');
+				var txt=document.createTextNode('링크');
+				a.appendChild(txt);
+				a.setAttribute('href','https://www.naver.com/');
+					
+				div.appendChild(a);				
+				
+				document.body.appendChild(div);
+			}
+			//스크립트는 함수도 자료형~ 
+			btn.onclick = func;  //괄호안붙여도됌 ㄷㄷ
+			console.log('확인');
+		}
+		//화면이 로드되면 그 함수 연결해이자시가
+		addEventListener('load',addElem);
+	</script>
+	<button id="btn">버튼을 누르면 요소가 생성됩니다.</button>
+</body>
+
+</html>
