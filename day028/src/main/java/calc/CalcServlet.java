@@ -45,21 +45,21 @@ public class CalcServlet extends HttpServlet {
 		//new -> set -> 계산 -> get
 		//int result=calc(num1,num2,op);
 		
-		CalcBean cb = new CalcBean();
-		cb.setNum1(num1);
-		cb.setNum2(num2);
-		cb.setOp(op);
-		cb.calc();
+//		CalcBean cb = new CalcBean();
+//		cb.setNum1(num1);
+//		cb.setNum2(num2);
+//		cb.setOp(op);
+//		cb.calc();
 		
 		
 		response.setContentType("text/html;charset=UTF-8");
 		
 		PrintWriter out=response.getWriter();
-		out.println("결과 :" + cb.getResult());
+		out.println("결과 :" + calc(num1,num2,op));
 	}
 	
 	
-	/*
+	
 	public int calc(int num1, int num2, String op) {
 		int result=0;
 		if(op.equals("+")) {
@@ -70,7 +70,7 @@ public class CalcServlet extends HttpServlet {
 		}
 		return result;
 	}
-	*/
+	
 	
 	//★개발자의 최고 목표는 "유지 보수~ "
 	//★"모듈화"가 기본입니다!!! :D
