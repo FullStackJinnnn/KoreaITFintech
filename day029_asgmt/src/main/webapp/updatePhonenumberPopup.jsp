@@ -10,7 +10,7 @@
 <title>회원탈퇴 확인 팝업창</title>
 </head>
 
-<body> 
+<body>
 <%-- 알아두면 좋은거 onunload="closePopup()" 
 -> 'x'를 눌러도 '확인'버튼과 동일하게 작동되도록 해줌 --%>
 <% if (session.getAttribute("nickname") == null) { %>
@@ -47,5 +47,8 @@ if(cm.withdraw()) { %>
 <input type="button" value="취소" onclick="window.close()">
 	
 	
+	 <script>
+	  document.getElementById('cmMsg').hidden = false;
+	  </script>
 </body>
 </html>

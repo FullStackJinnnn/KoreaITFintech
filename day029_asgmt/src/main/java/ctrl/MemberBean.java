@@ -14,12 +14,42 @@ public class MemberBean {
 	private int memberNum; // PK
 	private String id;
 	private String pw;
+	private String updatePw;
 	private String name;
+
 	private String nickname;
+	private String updateNickname;
+
 	private String birthday;
 	private int ph;
 	private String profile;
+	private String grade;
+	
+	private String msg = "";
+	public String getUpdatePw() {
+		return updatePw;
+	}
+	
+	public void setUpdatePw(String updatePw) {
+		this.updatePw = updatePw;
+	}
 
+	public String getUpdateNickname() {
+		return updateNickname;
+	}
+	
+	public void setUpdateNickname(String updateNickname) {
+		this.updateNickname = updateNickname;
+	}
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
+	
 	public String getProfile() {
 		return profile;
 	}
@@ -29,10 +59,11 @@ public class MemberBean {
 	}
 
 	// private String grade; -> grade는 쿼리문에 의해 '신입'으로 고정
-	private String msg = "";
+
 
 	// 회원가입해서 DB에 데이터넣기!
 	public boolean register() {
+		
 		// 회원가입창 들어갔을때, register.jsp 스스로에게 POST방식으로 전달하기 때문에
 		// 처음 입력안된 상태가 INSERT가 되어버려 cannot insert NULL 에러가 나온다.
 		MemberDAO mDAO = new MemberDAO();
@@ -48,6 +79,8 @@ public class MemberBean {
 		mDTO.setNickname(nickname);
 		mDTO.setBirthday(birthday);
 		mDTO.setPh(ph);
+		mDTO.setProfile(profile);
+		mDTO.setGrade(grade);
 		boolean flag = mDAO.insert(mDTO);
 		if (!flag) {
 			msg = "<font color='green'>회원가입 실패 :(</font>";
@@ -79,10 +112,64 @@ public class MemberBean {
 	public MemberDTO myInfo() {
 		MemberDAO mDAO = new MemberDAO();
 		MemberDTO mDTO = new MemberDTO();
-		mDTO.setSearchCondition("myInfo");
+		mDTO.setSearchCondition("userCheck");
 		mDTO.setNickname(nickname);
 		mDTO = mDAO.selectOne(mDTO);
 		return mDTO;
+	}
+	
+	
+
+	public boolean updateNickname() {
+		if (updateNickname == null) {
+			msg = "";
+			return false;
+		}
+		MemberDAO mDAO = new MemberDAO();
+		MemberDTO mDTO = new MemberDTO();
+		MemberDTO data = new MemberDTO();
+		mDTO.setSearchCondition("userCheck");
+		mDTO.setNickname(updateNickname);
+		data = mDAO.selectOne(mDTO);
+		if (data == null) {
+			mDTO.setNickname(nickname);
+			mDTO.setUpdateNickname(updateNickname);
+			mDTO.setSearchCondition("updateNickname");
+ 			mDAO.update(mDTO);
+			return true;
+		} else {
+			msg = "<font color='red'>중복된 닉네임</font>";
+			System.out.println(msg);
+			return false;
+		
+		}
+	}
+	
+	public int updatePw() {
+		if (pw == null) {
+			msg = "";
+			return -1;
+		}
+		MemberDAO mDAO = new MemberDAO();
+		MemberDTO mDTO = new MemberDTO();
+		MemberDTO data = new MemberDTO();
+		mDTO.setSearchCondition("userCheck");
+		mDTO.setNickname(nickname);
+		data=mDAO.selectOne(mDTO);
+		mDTO.setPw(pw);
+		if (mDTO.getPw().equals(data.getPw())) {
+			mDTO.setSearchCondition("updatePw");
+			mDTO.setPw(updatePw);
+			boolean flag = mDAO.update(mDTO);
+			if (!flag) {
+				msg = "<font color='red'>틀린 비밀번호</font>";
+				return 0;
+			} else {
+				msg = "<font color='red'>변경 성공</font>";
+				return 1;
+			}
+		}
+		return 0;
 	}
 
 	public boolean withdraw() {

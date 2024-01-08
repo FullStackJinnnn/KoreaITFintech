@@ -6,6 +6,10 @@ public class MemberDTO {
 	private String pw;
 	private String name;
 	private String nickname;
+	private String updateNickname; 
+	// nickname만 세션에 저장하는 바람에 ...
+	// nickname변경할때 매우힘들어서 생성 ㅜ	
+
 	private String birthday;
 	private int ph;
 	private String profile;
@@ -18,6 +22,13 @@ public class MemberDTO {
 	
 
 	
+	public String getUpdateNickname() {
+		return updateNickname;
+	}
+	
+	public void setUpdateNickname(String updateNickname) {
+		this.updateNickname = updateNickname;
+	}
 	public String getSearchCondition() {
 		return searchCondition;
 	}

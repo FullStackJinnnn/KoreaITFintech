@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% request.setCharacterEncoding("UTF-8"); %>
      <jsp:useBean id="cm" class="ctrl.MemberBean" />
      <jsp:setProperty name="cm" property="*" />
 
@@ -7,10 +8,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원탈퇴 확인 팝업창</title>
+<title>닉네임변경 팝업창</title>
 </head>
 
-<body> 
+<body>
 <%-- 알아두면 좋은거 onunload="closePopup()" 
 -> 'x'를 눌러도 '확인'버튼과 동일하게 작동되도록 해줌 --%>
 <% if (session.getAttribute("nickname") == null) { %>
@@ -19,33 +20,27 @@
 		</script>
 <%} %>
 
-<%
+<% 
+//페이지 새로고쳐서 닉네임 변경 적용이 바로되는건 모르겠음
 cm.setNickname((String)session.getAttribute("nickname"));
-
-if(cm.withdraw()) { %>
- 	
+if(cm.updateNickname()) { %>
 	<script>
 	window.close();
-	opener.parent.location="logout.jsp";
-	alert('잘가라~! :D');
-	
-	
+	alert('닉네임 변경 완료 :D');
 	</script>
-	session.invalidate();
 	
 <% } else {%> 
 	<%=cm.getMsg() %>
 <% } %>
 
 
-<br><br>정말 탈퇴하시겠습니까?<br><br>
-비밀번호를 입력해주세요.
-<form method="POST" >
-	<input type="password" name="pw" required><br>
+<br><br>변경하실 닉네임을 입력해주세요.<br>
+
+<form method="POST">
+	<input type="text" name="updateNickname" required><br>
 	<input type="submit" value="확인" >
 </form>
 <input type="button" value="취소" onclick="window.close()">
-	
-	
+
 </body>
 </html>

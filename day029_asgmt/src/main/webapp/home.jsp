@@ -17,6 +17,7 @@
 		
 		// 기본 제공 시간 30분 (맞음!)
 	}
+
 %>
 	<form method="POST" action="logincheck.jsp">
 		<input type="text" name="id" placeholder="아이디" required><br>

@@ -12,23 +12,27 @@
 </head>
 <body>
 
-<% if(cm.register()) { %>
+<% 
+
+if(cm.register()) { 
+	%>
    <script>
    //alert는 페이지가 하나 넘어간 것 이므로 history(-1)을하면 alert창 나온 이전으로 돌아간다.
    alert('회원가입 성공! :D');
    history.go(-2);
    </script>
- <% } else { %>
-     <script>
-     document.getElementById('cmMsg').hidden = true;
+ <% } else { 
+ %>
+      <script>
+      document.getElementById('cmMsg').hidden = true; 
      </script>
-<%} %> 
+<% }%>  
 	
 	
 	
 	<h1>REGISTER</h1>
 	<form method="POST">
-	<input type="email" name=" reid" placeholder="이메일" required><br> 
+	<input type="email" name="id" placeholder="이메일" required><br> 
 	<input type="password" name="pw" placeholder="비밀번호" required><br> 
 	<input type="text" name="name" placeholder="이름" required><br> 
 	<input type="text" name="nickname" placeholder="닉네임" required><br> 
@@ -43,9 +47,9 @@
 	실패하면 숨겨짐을 해제하여 cm.getMsg를 가져오고, 아니라면 alert를 띄운후에
 	로그인 화면으로 돌아갑니다.-->
 	
-	 <div id="cmMsg"><%=cm.getMsg()%></div>
+	  <div id="cmMsg"><%=cm.getMsg()%> </div>
 	 <script>
 	  document.getElementById('cmMsg').hidden = false;
-	  </script>
+	  </script> 
 </body>
 </html>

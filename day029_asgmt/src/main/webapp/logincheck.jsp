@@ -30,8 +30,8 @@ if(cm.login()!=null){
 	//ex) 로그인 후 마이페이지를 왔다갔다하면 세션 종료가 안됨.
 	//따라서 로그인 후 아무것도 안하면 5초간 유지.
 		session.setAttribute("nickname", mDTO.getNickname());
-		session.setMaxInactiveInterval(20); //1분간 아이디 유지
-		out.println("<script>alert('로그인은 5초간 유지됩니다.');</script>");
+		session.setMaxInactiveInterval(5); //1분간 아이디 유지
+		out.println("<script>alert('세션은 20초간 유지됩니다.');</script>");
 
 %>
 <script>location.href="main.jsp";</script>

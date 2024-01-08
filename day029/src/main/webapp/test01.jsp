@@ -8,8 +8,19 @@
 </head>
 <body>
 
-.jsp 페이지 내부에서 모든 로직을 작성
-유지보수에 불리한 방법
+<script>
+
+document.write("스크립트다..."));
+</script>
+
+<%
+public void print() {
+	System.out.println("ㅎㅇ");
+%>
+
+<h2><%=print()%></h2>;
+
+
 
 </body>
 </html>

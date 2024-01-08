@@ -8,6 +8,32 @@
 </head>
 <body>
 
+<%!
+	int i = 10000;
+
+%>
+
+
+<%if(true){
+	i=0;
+	System.out.print(i);%>
+
+<script>
+document.write(4 * 5);
+console.log("왕");
+</script>
+<% } else { %>
+
+<script>
+document.write(100);
+</script>
+ <% }%> 
+
+ <script>
+console.log("i출력~");
+<h1><%=i%></h1>
+</script>
+
 <%
 	// JAVA 코드 공간
 	for(int i=1;i<=5;i++){
