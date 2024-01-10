@@ -6,8 +6,11 @@
 <meta charset="UTF-8">
 <title>메인 페이지</title>
 <style type="text/css">
-	.info {
+	 .info {
 		width: 250px;
+	} 
+	a{
+    text-decoration: none;
 	}
 </style>
 </head>
@@ -22,7 +25,7 @@
 <script>
  document.querySelector('body').style.backgroundColor = 'orange';
 	 </script>
-		<a href="controller.jsp?action=logout">로그아웃</a> | <a href="controller.jsp?action=mypage">마이페이지</a>
+		<a href="logout.do">로그아웃</a> | <a href="myPage.do">마이페이지</a>
 
 <%
 	}
@@ -30,7 +33,7 @@
 	
 	
 %>
-		<a href="controller.jsp?action=loginPage">로그인</a> | <a href="controller.jsp?action=joinPage">회원가입</a>
+		<a href="loginPage.do">로그인</a> | <a href="joinPage.do">회원가입</a>
 <%
 	}
 %>
@@ -46,7 +49,7 @@
 		else{
 			for(ReplyDTO data:rdatas){
 	%>
-			<li><a href="controller.jsp?action=replySelectOne&Rid=<%=data.getRid()%>"><%=data.getRid()%>번 댓글 <%=data.getWriter()%>님이 작성</a></li>
+			<li><a href="replySelectOne.do?rid=<%=data.getRid()%>"><%=data.getRid()%>번 댓글 <%= data.getName() != null ? data.getName() + "님이 작성" : "탈퇴한 회원입니다" %></a></li>
 	<%
 			}
 		}
@@ -55,7 +58,7 @@
 
 <hr>
 
-		<form action="controller.jsp?action=replyInsert" method="POST">
+		<form action="replyInsert.do" method="POST">
 			
 			<%
 				if(mid != null){

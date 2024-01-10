@@ -81,8 +81,10 @@
 	else if(action.equals("updateName")) {
 		// 이름 변경
 		mDTO.setMid((String)session.getAttribute("mid"));
+		System.out.println(mDTO);
 		boolean flag=mDAO.update(mDTO);
 		if(flag){
+			
 			//변경된 DTO 다시 보내기~ 안그러면 <%=mDTO.getName() 에러난다...ㅡㅡ!!!
 			request.setAttribute("mDTO", mDTO);
 			out.println("<script>alert('이름 변경완료:D');</script>");
@@ -116,8 +118,8 @@
 		// 댓글 상세 페이지로 이동
 	}
 	else if(action.equals("replyInsert")){
-		String member=request.getParameter("action");
-		System.out.println(rDTO);
+	/* 	String member=request.getParameter("action");
+		System.out.println(rDTO); */
 		boolean flag=rDAO.insert(rDTO);
 		if(flag){
 			request.setAttribute("rDTO", rDTO);
@@ -127,6 +129,30 @@
 		else{
 			out.println("<script>alert('글 작성 실패!');history.go(-1);</script>");
 		}
+		// 댓글추가
+	}
+	else if(action.equals("replyUpdate")){
+		rDTO=rDAO.selectOne(rDTO);
+		boolean flag=rDAO.update(rDTO);
+		if(flag){
+			request.setAttribute("rDTO", rDTO);
+			pageContext.forward("reply.jsp");
+			//response.sendRedirect("controller.jsp?action=main");
+		}
+		else{
+			out.println("<script>alert('글 변경 실패!');history.go(-1);</script>");
+		} 
+	}
+		else if(action.equals("replyDelete")){
+			rDTO.setRid(Integer.parseInt(request.getParameter("Rid")));
+			boolean flag=rDAO.delete(rDTO);
+			if(flag){
+				response.sendRedirect("controller.jsp?action=main");
+			}
+			else{
+				out.println("<script>alert('글 삭제 실패!');history.go(-1);</script>");
+			}
+			
 		// 댓글추가
 	}
 	else{

@@ -160,7 +160,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="day024" path="/day024" reloadable="true" source="org.eclipse.jst.jee.server:day024"/><Context docBase="day027" path="/day027" reloadable="true" source="org.eclipse.jst.jee.server:day027"/><Context docBase="day028" path="/day028" reloadable="true" source="org.eclipse.jst.jee.server:day028"/><Context docBase="day029_asgmt" path="/day029_asgmt" reloadable="true" source="org.eclipse.jst.jee.server:day029_asgmt"/><Context docBase="day029" path="/day029" reloadable="true" source="org.eclipse.jst.jee.server:day029"/><Context docBase="day030" path="/day030" reloadable="true" source="org.eclipse.jst.jee.server:day030"/></Host>
+      <Context docBase="day024" path="/day024" reloadable="true" source="org.eclipse.jst.jee.server:day024"/><Context docBase="day027" path="/day027" reloadable="true" source="org.eclipse.jst.jee.server:day027"/><Context docBase="day028" path="/day028" reloadable="true" source="org.eclipse.jst.jee.server:day028"/><Context docBase="day029_asgmt" path="/day029_asgmt" reloadable="true" source="org.eclipse.jst.jee.server:day029_asgmt"/><Context docBase="day029" path="/day029" reloadable="true" source="org.eclipse.jst.jee.server:day029"/><Context docBase="day030" path="/day030" reloadable="true" source="org.eclipse.jst.jee.server:day030"/><Context docBase="day032" path="/day032" reloadable="true" source="org.eclipse.jst.jee.server:day032"/></Host>
     </Engine>
   </Service>
 </Server>
