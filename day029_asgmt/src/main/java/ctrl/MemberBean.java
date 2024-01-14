@@ -1,6 +1,8 @@
 package ctrl;
 
-import java.util.Date;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 //여기는 ....DAO DTO로부터 데이터를 받아 
 //필요한 메서드, 멤버변수를 선언해서 계산을 하는곳! 기능구현
@@ -62,7 +64,7 @@ public class MemberBean {
 
 
 	// 회원가입해서 DB에 데이터넣기!
-	public boolean register() {
+	public boolean register() throws ParseException {
 		
 		// 회원가입창 들어갔을때, register.jsp 스스로에게 POST방식으로 전달하기 때문에
 		// 처음 입력안된 상태가 INSERT가 되어버려 cannot insert NULL 에러가 나온다.
@@ -73,14 +75,22 @@ public class MemberBean {
 			msg = "";
 			return false;
 		}
+		String birth = birthday;
+		System.out.println(birth);
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		java.util.Date parsedDate = format.parse(birthday);
+		System.out.println(parsedDate);
+		java.sql.Date sqlDate = new java.sql.Date(parsedDate.getTime());
+		System.out.println(sqlDate);
 		mDTO.setId(id);
 		mDTO.setPw(pw);
 		mDTO.setName(name);
 		mDTO.setNickname(nickname);
-		mDTO.setBirthday(birthday);
+		mDTO.setBirthday(sqlDate);
 		mDTO.setPh(ph);
 		mDTO.setProfile(profile);
 		mDTO.setGrade(grade);
+		System.out.println(mDTO);
 		boolean flag = mDAO.insert(mDTO);
 		if (!flag) {
 			msg = "<font color='green'>회원가입 실패 :(</font>";
@@ -246,6 +256,13 @@ public class MemberBean {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberBean [memberNum=" + memberNum + ", id=" + id + ", pw=" + pw + ", updatePw=" + updatePw + ", name="
+				+ name + ", nickname=" + nickname + ", updateNickname=" + updateNickname + ", birthday=" + birthday
+				+ ", ph=" + ph + ", profile=" + profile + ", grade=" + grade + ", msg=" + msg + "]";
 	}
 
 	public String getMsg() {

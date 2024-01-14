@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date; 
+
 public class MemberDTO {
 	private int memberNum; // PK
 	private String id;
@@ -10,7 +12,7 @@ public class MemberDTO {
 	// nickname만 세션에 저장하는 바람에 ...
 	// nickname변경할때 매우힘들어서 생성 ㅜ	
 
-	private String birthday;
+	private Date birthday;
 	private int ph;
 	private String profile;
 	private String grade;
@@ -45,11 +47,11 @@ public class MemberDTO {
 		this.profile = profile;
 	}
 
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 

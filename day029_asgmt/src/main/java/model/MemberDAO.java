@@ -16,7 +16,7 @@ public class MemberDAO {
 	private static final String SELECTONE_LOGIN = "SELECT NICKNAME FROM MEMBER WHERE ID=? AND PW=?";
 	private static final String SELECTONE_USERCHECK = "SELECT ID, PW, NAME, NICKNAME, BIRTHDAY, PH, PROFILE, GRADE FROM MEMBER WHERE NICKNAME=?";
 
-	private static final String INSERT = "INSERT INTO MEMBER (MEMBERNUM,ID, PW, NAME, NICKNAME, BIRTHDAY, PH, PROFILE, GRADE) VALUES((SELECT NVL(MAX(MEMBERNUM),0)+1 FROM MEMBER),?,?,?,?,?,?,?,'신입')";
+	private static final String INSERT = "INSERT INTO MEMBER (MEMBERNUM,ID, PW, NAME, NICKNAME, BIRTH, PH, PROFILE, GRADE) VALUES((SELECT NVL(MAX(MEMBERNUM),0)+1 FROM MEMBER),?,?,?,?,?,?,?,'신입')";
 	private static final String UPDATE_WITHDRAW = "UPDATE MEMBER SET GRADE='탈퇴' WHERE NICKNAME=? AND PW=?";
 	private static final String UPDATE_PW = "UPDATE MEMBER SET PW=? WHERE NICKNAME=?";
 	private static final String UPDATE_NICKNAME = "UPDATE MEMBER SET NICKNAME=? WHERE NICKNAME=?";
@@ -88,7 +88,8 @@ public class MemberDAO {
 			pstmt.setString(2, mDTO.getPw());
 			pstmt.setString(3, mDTO.getName());
 			pstmt.setString(4, mDTO.getNickname());
-			pstmt.setString(5, mDTO.getBirthday());
+			pstmt.setDate(5, mDTO.getBirthday());
+			System.out.println(mDTO.getBirthday());
 			pstmt.setInt(6, mDTO.getPh());
 			pstmt.setString(7, mDTO.getProfile());
 
