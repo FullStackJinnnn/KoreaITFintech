@@ -8,8 +8,8 @@
 <jsp:useBean class="model.dao.ReplyDAO" id="rDAO" />
 <jsp:useBean class="model.dto.ReplyDTO" id="rDTO" />
 <jsp:useBean class="model.dao.MemberDAO" id="mDAO" />
-<jsp:useBean class="model.dto.MemberDTO" id="mDTO" />
-<jsp:setProperty name="mDTO" property="*" />
+<jsp:useBean class="model.dto.MemberDTO" id="memberDTO" />
+<jsp:setProperty name="memberDTO" property="*" />
 <jsp:setProperty name="rDTO" property="*" />
 <%
 	String action=request.getParameter("action");
@@ -17,7 +17,7 @@
 		ArrayList<ReplyDTO> rdatas=rDAO.selectAll(rDTO);
 		request.setAttribute("rdatas", rdatas);
 		
-		ArrayList<MemberDTO> mdatas=mDAO.selectAll(mDTO);
+		ArrayList<MemberDTO> mdatas=mDAO.selectAll(memberDTO);
 		request.setAttribute("mdatas", mdatas);
 	
 		pageContext.forward("main.jsp");
@@ -30,7 +30,7 @@
 	}
 	else if(action.equals("join")){
 		
-		boolean flag=mDAO.insert(mDTO);
+		boolean flag=mDAO.insert(memberDTO);
 		if(flag){
 			response.sendRedirect("controller.jsp?action=main");
 		}
@@ -49,10 +49,10 @@
 		// 로그아웃
 	}
 	else if(action.equals("mypage")){
-		mDTO.setMid((String)session.getAttribute("mid"));
-		mDTO.setSearchCondition("userinfo");
-		mDTO=mDAO.selectOne(mDTO);
-		request.setAttribute("mDTO", mDTO);
+		memberDTO.setMid((String)session.getAttribute("mid"));
+		memberDTO.setSearchCondition("userinfo");
+		memberDTO=mDAO.selectOne(memberDTO);
+		request.setAttribute("memberDTO", memberDTO);
 	
 		pageContext.forward("mypage.jsp");
 
@@ -61,11 +61,11 @@
 	
 	
 	else if(action.equals("login")){
-		mDTO.setSearchCondition("login");
-		mDTO=mDAO.selectOne(mDTO);
-		if(mDTO!=null){
-		 	session.setAttribute("mid",mDTO.getMid());
-			session.setAttribute("member",mDTO.getName()); 
+		memberDTO.setSearchCondition("login");
+		memberDTO=mDAO.selectOne(memberDTO);
+		if(memberDTO!=null){
+		 	session.setAttribute("mid",memberDTO.getMid());
+			session.setAttribute("member",memberDTO.getName()); 
 			response.sendRedirect("controller.jsp?action=main");
 			
 		}
@@ -80,13 +80,13 @@
 	}
 	else if(action.equals("updateName")) {
 		// 이름 변경
-		mDTO.setMid((String)session.getAttribute("mid"));
-		System.out.println(mDTO);
-		boolean flag=mDAO.update(mDTO);
+		memberDTO.setMid((String)session.getAttribute("mid"));
+		System.out.println(memberDTO);
+		boolean flag=mDAO.update(memberDTO);
 		if(flag){
 			
-			//변경된 DTO 다시 보내기~ 안그러면 <%=mDTO.getName() 에러난다...ㅡㅡ!!!
-			request.setAttribute("mDTO", mDTO);
+			//변경된 DTO 다시 보내기~ 안그러면 <%=memberDTO.getName() 에러난다...ㅡㅡ!!!
+			request.setAttribute("memberDTO", memberDTO);
 			out.println("<script>alert('이름 변경완료:D');</script>");
 		}
 		else{
@@ -96,8 +96,8 @@
 	}
 	else if(action.equals("withdraw")){
 		// 회원 탈퇴
-		mDTO.setMid((String)session.getAttribute("mid"));
-		boolean flag=mDAO.delete(mDTO);
+		memberDTO.setMid((String)session.getAttribute("mid"));
+		boolean flag=mDAO.delete(memberDTO);
 		if(flag){
 			out.println("<script>alert('탈퇴완료');</script>");
 			session.invalidate();

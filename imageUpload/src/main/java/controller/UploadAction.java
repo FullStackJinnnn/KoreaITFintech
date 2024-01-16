@@ -26,7 +26,7 @@ public class UploadAction implements Action{
 		request.setCharacterEncoding("UTF-8");
 		
 		MemberDAO mDAO=new MemberDAO();
-		MemberDTO mDTO=new MemberDTO();
+		MemberDTO memberDTO=new MemberDTO();
 		
 		 // 해당 폴더에 이미지를 저장시킨다
 
@@ -71,16 +71,16 @@ public class UploadAction implements Action{
 
 		String fileRealName = multipartRequest.getFilesystemName("file");
 		
-		mDTO.setFileName(fileName);
-		mDTO.setFileRealName(fileRealName);
+		memberDTO.setFileName(fileName);
+		memberDTO.setFileRealName(fileRealName);
 		
 	
 
 		// 디비에 업로드 메소
 		//new fileDAO().upload(fileName, fileRealName);
-		boolean flag = mDAO.insert(mDTO); 
+		boolean flag = mDAO.insert(memberDTO); 
 		if (flag) {
-			request.setAttribute("mDTO", mDTO);
+			request.setAttribute("memberDTO", memberDTO);
 		} else {
 			
 		}

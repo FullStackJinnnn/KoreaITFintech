@@ -30,8 +30,8 @@ public class MainAction implements Action{
 		request.setAttribute("rdatas", rdatas);
 		
 		MemberDAO mDAO=new MemberDAO();
-		MemberDTO mDTO=new MemberDTO();
-		ArrayList<MemberDTO> mdatas=mDAO.selectAll(mDTO);
+		MemberDTO memberDTO=new MemberDTO();
+		ArrayList<MemberDTO> mdatas=mDAO.selectAll(memberDTO);
 		request.setAttribute("mdatas", mdatas);
 		
 		return forward;

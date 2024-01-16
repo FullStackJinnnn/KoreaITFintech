@@ -22,9 +22,9 @@ public class MemberDeleteAction implements Action {
 		
 		HttpSession session = request.getSession();
 		MemberDAO mDAO=new MemberDAO();
-		MemberDTO mDTO=new MemberDTO();
-		mDTO.setMid((String)session.getAttribute("mid"));
-		boolean flag=mDAO.delete(mDTO);
+		MemberDTO memberDTO=new MemberDTO();
+		memberDTO.setMid((String)session.getAttribute("mid"));
+		boolean flag=mDAO.delete(memberDTO);
 		if(flag) {
 			session.invalidate();
 		}

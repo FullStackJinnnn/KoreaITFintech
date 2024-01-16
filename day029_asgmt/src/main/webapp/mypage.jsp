@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <jsp:useBean id="cm" class="ctrl.MemberBean" />
-	<jsp:useBean id="mDTO" class="model.MemberDTO" />
+	<jsp:useBean id="memberDTO" class="model.MemberDTO" />
 	<%-- <%@page isErrorPage="true" %>  <%@page errorPage="mypage.jsp" %> --%>
 
 <!DOCTYPE html>
@@ -18,9 +18,9 @@
 	 response.sendRedirect("logout.jsp"); 
 	   와 ㅡ,,,,,,여기선 왜 스크립트가 안먹냐 java코드로 하니까 됩니다!!!!!!!ㅜㅜㅜㅜㅜㅜㅜ
 	 userInfo.jsp에선 js코드로 써도 잘만되던데 ,,,,,,,,,,,,,,,,,ㅜㅜㅜㅜㅜㅜㅜㅜㅜ 가아니라..
-	 session에 저장된 정보가 null이 된 순간에 null을 mDTO에 넣어서  null 값을 반환하기 때문에
-	 mDTO.getProfile()를 화면에 가져오는 시점에서 바로 에러가 일어난다. 따라서 null이 아닐떄만!
-	 mDTO.getProfile()을 화면에 가져올 수 있도록 처리를 해주자! 너무어렵다 -->
+	 session에 저장된 정보가 null이 된 순간에 null을 memberDTO에 넣어서  null 값을 반환하기 때문에
+	 memberDTO.getProfile()를 화면에 가져오는 시점에서 바로 에러가 일어난다. 따라서 null이 아닐떄만!
+	 memberDTO.getProfile()을 화면에 가져올 수 있도록 처리를 해주자! 너무어렵다 -->
 	    <script>
 		alert('세션 종료 !!!');
 		location.href="logout.jsp";
@@ -30,21 +30,21 @@
 <%
 // seesion.getAttribute"(nickname)"은 object 타입이기때문에 string으로 캐스팅!
 cm.setNickname((String)session.getAttribute("nickname"));
-mDTO=cm.myInfo();
+memberDTO=cm.myInfo();
 %>	 
 <% if (session.getAttribute("nickname")!=null) { %>
-프로필 사진 :<a><img src="<%=mDTO.getProfile()%>" style="width:200px; height:200px;"> </a><br>
-닉네임 : <%=mDTO.getNickname()%> <button type="button">
+프로필 사진 :<a><img src="<%=memberDTO.getProfile()%>" style="width:200px; height:200px;"> </a><br>
+닉네임 : <%=memberDTO.getNickname()%> <button type="button">
   <img src="https://cdn-icons-png.flaticon.com/512/2541/2541991.png" style="width:10px; height:10px;"alt="닉네임변경" onclick="openUpdateNicknamePopUp()" >
 </button> <br>
-아이디 : <%=mDTO.getId()%> <br>
-비밀번호 : <%=mDTO.getPw()%> <button type="button">
+아이디 : <%=memberDTO.getId()%> <br>
+비밀번호 : <%=memberDTO.getPw()%> <button type="button">
   <img src="https://cdn-icons-png.flaticon.com/512/2541/2541991.png" style="width:10px; height:10px;"alt="비밀번호변경" onclick="openUpdatePasswordPopUp()" >
 </button> <br>
-전화번호 : <%=mDTO.getPh()%> <button type="button">
+전화번호 : <%=memberDTO.getPh()%> <button type="button">
   <img src="https://cdn-icons-png.flaticon.com/512/2541/2541991.png" style="width:10px; height:10px;"alt="폰넘버 변경" onclick="openUpdatePhonenumberPopUp()" >
 </button> <br>
-등급 : <%=mDTO.getGrade()%> <br>
+등급 : <%=memberDTO.getGrade()%> <br>
 <% } %>
 
 내가 쓴 글 조회 <br>

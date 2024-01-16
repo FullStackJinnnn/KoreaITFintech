@@ -24,15 +24,15 @@ public class LoginAction implements Action{
 		
 		HttpSession session = request.getSession();
 		MemberDAO mDAO=new MemberDAO();
-		MemberDTO mDTO=new MemberDTO();
-		mDTO.setSearchCondition("login");
-		mDTO.setMid(request.getParameter("mid"));
-		mDTO.setMpw(request.getParameter("mpw"));
-		mDTO=mDAO.selectOne(mDTO);
-		System.out.println(mDTO);
-		if(mDTO != null) {
+		MemberDTO memberDTO=new MemberDTO();
+		memberDTO.setSearchCondition("login");
+		memberDTO.setMid(request.getParameter("mid"));
+		memberDTO.setMpw(request.getParameter("mpw"));
+		memberDTO=mDAO.selectOne(memberDTO);
+		System.out.println(memberDTO);
+		if(memberDTO != null) {
 			
-			session.setAttribute("mid", mDTO.getMid());
+			session.setAttribute("mid", memberDTO.getMid());
 			System.out.println(session.getAttribute("mid"));
 			//response.sendRedirect("controller.jsp?action=main");
 		}

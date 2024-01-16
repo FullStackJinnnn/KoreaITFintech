@@ -21,7 +21,7 @@ public class MemberDAO {
 	private static final String UPDATE_NAME = "UPDATE MEMBER SET NAME=? WHERE MID=?";
 	private static final String DELETE = "DELETE FROM MEMBER WHERE MID=?";
 
-//	public ArrayList<MemberDTO> selectAll(MemberDTO mDTO) {
+//	public ArrayList<MemberDTO> selectAll(MemberDTO memberDTO) {
 //		ArrayList<MemberDTO> datas = new ArrayList<MemberDTO>();
 //
 //		conn = JDBCUtil.connect();
@@ -47,15 +47,15 @@ public class MemberDAO {
 //		return datas;
 //	}
 //
-//	public MemberDTO selectOne(MemberDTO mDTO) {
+//	public MemberDTO selectOne(MemberDTO memberDTO) {
 //		MemberDTO data = null;
 //
 //		conn = JDBCUtil.connect();
-//		if (mDTO.getSearchCondition().equals("login")) {
+//		if (memberDTO.getSearchCondition().equals("login")) {
 //			try {
 //				pstmt = conn.prepareStatement(SELECTONE_LOGIN);
-//				pstmt.setString(1, mDTO.getMid());
-//				pstmt.setString(2, mDTO.getMpw());
+//				pstmt.setString(1, memberDTO.getMid());
+//				pstmt.setString(2, memberDTO.getMpw());
 //
 //				ResultSet rs = pstmt.executeQuery();
 //
@@ -72,10 +72,10 @@ public class MemberDAO {
 //			} finally {
 //				JDBCUtil.disconnect(pstmt, conn);
 //			}
-//		} else if (mDTO.getSearchCondition().equals("userinfo")) {
+//		} else if (memberDTO.getSearchCondition().equals("userinfo")) {
 //			try {
 //				pstmt = conn.prepareStatement(SELECTONE_USERINFO);
-//				pstmt.setString(1, mDTO.getMid());
+//				pstmt.setString(1, memberDTO.getMid());
 //
 //				ResultSet rs = pstmt.executeQuery();
 //
@@ -96,12 +96,12 @@ public class MemberDAO {
 //		return data;
 //	}
 
-	public boolean insert(MemberDTO mDTO) {
+	public boolean insert(MemberDTO memberDTO) {
 		conn = JDBCUtil.connect();
 		try {
 			pstmt = conn.prepareStatement(INSERT);
-			pstmt.setString(1, mDTO.getFileName());
-			pstmt.setString(2, mDTO.getFileRealName());
+			pstmt.setString(1, memberDTO.getFileName());
+			pstmt.setString(2, memberDTO.getFileRealName());
 			int rs = pstmt.executeUpdate();
 			if (rs <= 0) {
 				return false;
@@ -115,12 +115,12 @@ public class MemberDAO {
 		return true;
 	}
 
-//	public boolean update(MemberDTO mDTO) {
+//	public boolean update(MemberDTO memberDTO) {
 //		conn = JDBCUtil.connect();
 //		try {
 //			pstmt = conn.prepareStatement(UPDATE_NAME);
-//			pstmt.setString(1, mDTO.getName());
-//			pstmt.setString(2, mDTO.getMid());
+//			pstmt.setString(1, memberDTO.getName());
+//			pstmt.setString(2, memberDTO.getMid());
 //			int result = pstmt.executeUpdate();
 //			if (result <= 0) {
 //				return false;
@@ -134,12 +134,12 @@ public class MemberDAO {
 //		return true;
 //	}
 //
-//	public boolean delete(MemberDTO mDTO) {
+//	public boolean delete(MemberDTO memberDTO) {
 //
 //		conn = JDBCUtil.connect();
 //		try {
 //			pstmt = conn.prepareStatement(DELETE);
-//			pstmt.setString(1, mDTO.getMid());
+//			pstmt.setString(1, memberDTO.getMid());
 //			int result = pstmt.executeUpdate();
 //			if (result <= 0) {
 //				return false;

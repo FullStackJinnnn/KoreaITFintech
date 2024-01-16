@@ -7,10 +7,10 @@
 <title>마이페이지</title>
 </head>
 <body>
-<%MemberDTO mDTO = (MemberDTO)request.getAttribute("mDTO"); %>
+<%MemberDTO memberDTO = (MemberDTO)request.getAttribute("memberDTO"); %>
 	
- 	아이디 : <%=mDTO.getMid()%>  <br>
-	이름 : <%=mDTO.getName()%> <br><br>
+ 	아이디 : <%=memberDTO.getMid()%>  <br>
+	이름 : <%=memberDTO.getName()%> <br><br>
 	 
 <form action="changeName.do" method="POST">
 <input type="hidden" name="action" value="changeName">

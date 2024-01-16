@@ -28,5 +28,5 @@
 
 <%-- <% // seesion.getAttribute"(nickname)"은 object 타입이기때문에 string으로 캐스팅!
 cm.setNickname((String)session.getAttribute("nickname"));
-mDTO=cm.myInfo();
+memberDTO=cm.myInfo();
 %>	 --%>

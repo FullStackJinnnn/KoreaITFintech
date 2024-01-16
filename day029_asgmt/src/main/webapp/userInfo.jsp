@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <jsp:useBean id="cm" class="ctrl.MemberBean" />
-	<jsp:useBean id="mDTO" class="model.MemberDTO" />
+	<jsp:useBean id="memberDTO" class="model.MemberDTO" />
 	<%-- <%@page isErrorPage="true" %>  <%@page errorPage="mypage.jsp" %> --%>
 
 <!DOCTYPE html>
@@ -24,21 +24,21 @@
 System.out.println(session.getAttribute("nickname"));
 String userName = request.getParameter("userName");
 cm.setNickname(userName);
-mDTO=cm.myInfo();
+memberDTO=cm.myInfo();
 %>	
-<!-- 여기는 세션이 종료 되어도 mDTO에는 다른 유저의 정보가 전화면에서 넘어온 것 뿐이 때문에 세션 종료와 관계 없어서 에러 안난다. -->
-프로필 사진 :<a><img src="<%=mDTO.getProfile()%>" style="width:200px; height:200px;"> </a><br>
-닉네임 : <%=mDTO.getNickname()%> <button type="button">
+<!-- 여기는 세션이 종료 되어도 memberDTO에는 다른 유저의 정보가 전화면에서 넘어온 것 뿐이 때문에 세션 종료와 관계 없어서 에러 안난다. -->
+프로필 사진 :<a><img src="<%=memberDTO.getProfile()%>" style="width:200px; height:200px;"> </a><br>
+닉네임 : <%=memberDTO.getNickname()%> <button type="button">
   <img src="https://cdn-icons-png.flaticon.com/512/2541/2541991.png" style="width:10px; height:10px;"alt="닉네임변경" onclick="openUpdateNicknamePopUp()" >
 </button> <br>
-아이디 : <%=mDTO.getId()%> <br>
-비밀번호 : <%=mDTO.getPw()%> <button type="button">
+아이디 : <%=memberDTO.getId()%> <br>
+비밀번호 : <%=memberDTO.getPw()%> <button type="button">
   <img src="https://cdn-icons-png.flaticon.com/512/2541/2541991.png" style="width:10px; height:10px;"alt="비밀번호변경" onclick="openUpdatePasswordPopUp()" >
 </button> <br>
-전화번호 : <%=mDTO.getPh()%> <button type="button">
+전화번호 : <%=memberDTO.getPh()%> <button type="button">
   <img src="https://cdn-icons-png.flaticon.com/512/2541/2541991.png" style="width:10px; height:10px;"alt="폰넘버 변경" onclick="openUpdatePhonenumberPopUp()" >
 </button> <br>
-등급 : <%=mDTO.getGrade()%> <br>
+등급 : <%=memberDTO.getGrade()%> <br>
 내가 쓴 글 조회 <br>
 <!-- #은 최상위 루트를 가리켜서 페이지가 없거나 index.jsp가 나온다. -->
 <!-- 리턴값이 true이면 href로 연결된 링크로 이동하고 false이면 이동을 하지 않는다. -->

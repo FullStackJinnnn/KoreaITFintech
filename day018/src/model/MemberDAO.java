@@ -25,17 +25,17 @@ public class MemberDAO {
 	// ※ 사용하지않는 DAO의 CRUD(비즈니스 메서드,핵심 관심,핵심 로직)는
 	//    private으로 은닉했습니다.
 
-	private ArrayList<MemberDTO> selectAll(MemberDTO mDTO) {
+	private ArrayList<MemberDTO> selectAll(MemberDTO memberDTO) {
 		return null;
 	}
-	public MemberDTO selectOne(MemberDTO mDTO) {
-		if(mDTO.getSearchCondition().equals("로그인")) {
+	public MemberDTO selectOne(MemberDTO memberDTO) {
+		if(memberDTO.getSearchCondition().equals("로그인")) {
 			boolean flag=false;
 			int i;
 			for(i=0;i<mdatas.size();i++) {
-				if(mdatas.get(i).getMid().equals(mDTO.getMid())) {
+				if(mdatas.get(i).getMid().equals(memberDTO.getMid())) {
 					System.out.println("[로그] ID 일치");
-					if(mdatas.get(i).getMpw().equals(mDTO.getMpw())) {
+					if(mdatas.get(i).getMpw().equals(memberDTO.getMpw())) {
 						System.out.println("[로그] PW 일치");
 						flag=true;
 						break;
@@ -51,7 +51,7 @@ public class MemberDAO {
 			boolean flag=false;
 			int i;
 			for(i=0;i<mdatas.size();i++) {
-				if(mdatas.get(i).getMid().equals(mDTO.getMid())) {
+				if(mdatas.get(i).getMid().equals(memberDTO.getMid())) {
 					System.out.println("[로그] ID 일치");
 					flag=true;
 					break;
@@ -63,13 +63,13 @@ public class MemberDAO {
 			return mdatas.get(i);
 		}
 	}
-	public boolean insert(MemberDTO mDTO) {
+	public boolean insert(MemberDTO memberDTO) {
 		try {
 			MemberDTO data=new MemberDTO();
-			data.setMid(mDTO.getMid());
-			data.setMpw(mDTO.getMpw());
-			data.setName(mDTO.getName());
-			data.setGrade(mDTO.getGrade());
+			data.setMid(memberDTO.getMid());
+			data.setMpw(memberDTO.getMpw());
+			data.setName(memberDTO.getName());
+			data.setGrade(memberDTO.getGrade());
 			mdatas.add(data);
 		}catch(Exception e) {
 			System.out.println("[로그] memberDAO.insert()에서 예외발생!");
@@ -77,11 +77,11 @@ public class MemberDAO {
 		}
 		return true;
 	}
-	public boolean update(MemberDTO mDTO) {
+	public boolean update(MemberDTO memberDTO) {
 		boolean flag=false;
 		int i;
 		for(i=0;i<mdatas.size();i++) {
-			if(mdatas.get(i).getMid().equals(mDTO.getMid())) {
+			if(mdatas.get(i).getMid().equals(memberDTO.getMid())) {
 				flag=true;
 				break;
 			}
@@ -89,14 +89,14 @@ public class MemberDAO {
 		if(!flag) {
 			return false;
 		}
-		mdatas.get(i).setMpw(mDTO.getMpw());
+		mdatas.get(i).setMpw(memberDTO.getMpw());
 		return true;
 	}
-	public boolean delete(MemberDTO mDTO) {
+	public boolean delete(MemberDTO memberDTO) {
 		boolean flag=false;
 		int i;
 		for(i=0;i<mdatas.size();i++) {
-			if(mdatas.get(i).getMid().equals(mDTO.getMid())) {
+			if(mdatas.get(i).getMid().equals(memberDTO.getMid())) {
 				flag=true;
 				break;
 			}

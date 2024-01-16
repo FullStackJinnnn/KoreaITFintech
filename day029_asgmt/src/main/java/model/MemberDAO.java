@@ -23,21 +23,21 @@ public class MemberDAO {
 	private static final String UPDATE_PH = "UPDATE MEMBER SET PH=? WHERE ID=?";
 	private static final String DELETE = "DELETE FROM MEMBER WHERE NICKNAME=? PW=?";
 
-	public ArrayList<MemberDTO> selectAll(MemberDTO mDTO) {
+	public ArrayList<MemberDTO> selectAll(MemberDTO memberDTO) {
 		ArrayList<MemberDTO> datas = new ArrayList<MemberDTO>();
 
 		return datas;
 	}
 
-	public MemberDTO selectOne(MemberDTO mDTO) {
+	public MemberDTO selectOne(MemberDTO memberDTO) {
 		MemberDTO data = null;
 		conn = JDBCUtil.connect();
-		if (mDTO.getSearchCondition().equals("login")) {
+		if (memberDTO.getSearchCondition().equals("login")) {
 
 			try {
 				pstmt = conn.prepareStatement(SELECTONE_LOGIN);
-				pstmt.setString(1, mDTO.getId());
-				pstmt.setString(2, mDTO.getPw());
+				pstmt.setString(1, memberDTO.getId());
+				pstmt.setString(2, memberDTO.getPw());
 				ResultSet rs = pstmt.executeQuery();
 				if (rs.next()) {
 					data = new MemberDTO();
@@ -51,10 +51,10 @@ public class MemberDAO {
 			}
 		}
 
-		else if (mDTO.getSearchCondition().equals("userCheck")) {
+		else if (memberDTO.getSearchCondition().equals("userCheck")) {
 			try {
 				pstmt = conn.prepareStatement(SELECTONE_USERCHECK);
-				pstmt.setString(1, mDTO.getNickname());
+				pstmt.setString(1, memberDTO.getNickname());
 				ResultSet rs = pstmt.executeQuery();
 				if (rs.next()) {
 					data = new MemberDTO();
@@ -79,19 +79,19 @@ public class MemberDAO {
 
 	}
 
-	public boolean insert(MemberDTO mDTO) {
+	public boolean insert(MemberDTO memberDTO) {
 		conn = JDBCUtil.connect();
 
 		try {
 			pstmt = conn.prepareStatement(INSERT);
-			pstmt.setString(1, mDTO.getId());
-			pstmt.setString(2, mDTO.getPw());
-			pstmt.setString(3, mDTO.getName());
-			pstmt.setString(4, mDTO.getNickname());
-			pstmt.setDate(5, mDTO.getBirthday());
-			System.out.println(mDTO.getBirthday());
-			pstmt.setInt(6, mDTO.getPh());
-			pstmt.setString(7, mDTO.getProfile());
+			pstmt.setString(1, memberDTO.getId());
+			pstmt.setString(2, memberDTO.getPw());
+			pstmt.setString(3, memberDTO.getName());
+			pstmt.setString(4, memberDTO.getNickname());
+			pstmt.setDate(5, memberDTO.getBirthday());
+			System.out.println(memberDTO.getBirthday());
+			pstmt.setInt(6, memberDTO.getPh());
+			pstmt.setString(7, memberDTO.getProfile());
 
 			int result = pstmt.executeUpdate();
 			if (result <= 0) {
@@ -106,13 +106,13 @@ public class MemberDAO {
 		return true;
 	}
 
-	public boolean update(MemberDTO mDTO) {
+	public boolean update(MemberDTO memberDTO) {
 		conn = JDBCUtil.connect();
-		if (mDTO.getSearchCondition().equals("withdraw")) {
+		if (memberDTO.getSearchCondition().equals("withdraw")) {
 			try {
 				pstmt = conn.prepareStatement(UPDATE_WITHDRAW);
-				pstmt.setString(1, mDTO.getPw());
-				pstmt.setString(2, mDTO.getNickname());
+				pstmt.setString(1, memberDTO.getPw());
+				pstmt.setString(2, memberDTO.getNickname());
 				int result = pstmt.executeUpdate();
 				if (result <= 0) {
 					return false;
@@ -123,11 +123,11 @@ public class MemberDAO {
 			} finally {
 				JDBCUtil.disconnect(pstmt, conn);
 			}
-		} else if (mDTO.getSearchCondition().equals("updatePw")) {
+		} else if (memberDTO.getSearchCondition().equals("updatePw")) {
 			try {
 				pstmt = conn.prepareStatement(UPDATE_PW);
-				pstmt.setString(1, mDTO.getPw());
-				pstmt.setString(2, mDTO.getNickname());
+				pstmt.setString(1, memberDTO.getPw());
+				pstmt.setString(2, memberDTO.getNickname());
 				int result = pstmt.executeUpdate();
 				if (result <= 0) {
 					return false;
@@ -138,11 +138,11 @@ public class MemberDAO {
 			} finally {
 				JDBCUtil.disconnect(pstmt, conn);
 			}
-		} else if (mDTO.getSearchCondition().equals("updateNickname")) {
+		} else if (memberDTO.getSearchCondition().equals("updateNickname")) {
 			try {
 				pstmt = conn.prepareStatement(UPDATE_NICKNAME);
-				pstmt.setString(1, mDTO.getUpdateNickname());
-				pstmt.setString(2, mDTO.getNickname());
+				pstmt.setString(1, memberDTO.getUpdateNickname());
+				pstmt.setString(2, memberDTO.getNickname());
 				int result = pstmt.executeUpdate();
 				if (result <= 0) {
 					return false;
@@ -157,7 +157,7 @@ public class MemberDAO {
 		return true;
 	}
 
-	private boolean delete(MemberDTO mDTO) {
+	private boolean delete(MemberDTO memberDTO) {
 		return false;
 	}
 

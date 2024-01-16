@@ -41,11 +41,11 @@ public class CTRL {
 		String mid=logoutVIEW.inputMid();
 		String mpw=logoutVIEW.inputMpw();
 
-		MemberDTO mDTO=new MemberDTO();
-		mDTO.setMid(mid);
-		mDTO.setMpw(mpw);
-		mDTO.setSearchCondition("로그인");
-		loginINFO=mDAO.selectOne(mDTO);
+		MemberDTO memberDTO=new MemberDTO();
+		memberDTO.setMid(mid);
+		memberDTO.setMpw(mpw);
+		memberDTO.setSearchCondition("로그인");
+		loginINFO=mDAO.selectOne(memberDTO);
 
 		if(loginINFO==null) {
 			commonVIEW.printFalse();
@@ -196,10 +196,10 @@ public class CTRL {
 				String mid;
 				while(true) {
 					mid=logoutVIEW.inputMid();
-					MemberDTO mDTO=new MemberDTO();
-					mDTO.setMid(mid);
-					mDTO.setSearchCondition("ID중복검사");
-					if(mDAO.selectOne(mDTO)==null) { // 중복이 아니라면
+					MemberDTO memberDTO=new MemberDTO();
+					memberDTO.setMid(mid);
+					memberDTO.setSearchCondition("ID중복검사");
+					if(mDAO.selectOne(memberDTO)==null) { // 중복이 아니라면
 						break;
 					}
 					logoutVIEW.printInfo();
@@ -207,12 +207,12 @@ public class CTRL {
 				String mpw=logoutVIEW.inputMpw();
 				String name=logoutVIEW.inputName();
 
-				MemberDTO mDTO=new MemberDTO();
-				mDTO.setMid(mid);
-				mDTO.setMpw(mpw);
-				mDTO.setName(name);
-				mDTO.setGrade("USER");
-				if(!mDAO.insert(mDTO)) {
+				MemberDTO memberDTO=new MemberDTO();
+				memberDTO.setMid(mid);
+				memberDTO.setMpw(mpw);
+				memberDTO.setName(name);
+				memberDTO.setGrade("USER");
+				if(!mDAO.insert(memberDTO)) {
 					commonVIEW.printFalse();
 					continue;
 				}
@@ -229,21 +229,21 @@ public class CTRL {
 			else if(action==9) {
 				// 비밀번호를 확인한후에 비번변경을 진행
 				String mpw=logoutVIEW.inputMpw();
-				MemberDTO mDTO=new MemberDTO();
-				mDTO.setMid(loginINFO.getMid());
-				mDTO.setMpw(mpw);
-				mDTO.setSearchCondition("로그인");
-				mDTO=mDAO.selectOne(mDTO);
-				if(mDTO==null) {
+				MemberDTO memberDTO=new MemberDTO();
+				memberDTO.setMid(loginINFO.getMid());
+				memberDTO.setMpw(mpw);
+				memberDTO.setSearchCondition("로그인");
+				memberDTO=mDAO.selectOne(memberDTO);
+				if(memberDTO==null) {
 					commonVIEW.printFalse();
 					continue;
 				}
 
 				// 변경할 비번입력
 				mpw=logoutVIEW.inputMpw();
-				mDTO.setMid(loginINFO.getMid());
-				mDTO.setMpw(mpw);
-				if(!mDAO.update(mDTO)) {
+				memberDTO.setMid(loginINFO.getMid());
+				memberDTO.setMpw(mpw);
+				if(!mDAO.update(memberDTO)) {
 					commonVIEW.printFalse();
 					continue;
 				}

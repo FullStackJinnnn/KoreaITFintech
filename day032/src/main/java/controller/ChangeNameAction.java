@@ -24,12 +24,12 @@ public class ChangeNameAction implements Action{
 		
 		HttpSession session = request.getSession();
 		MemberDAO mDAO=new MemberDAO();
-		MemberDTO mDTO=new MemberDTO();
-		mDTO.setMid((String)session.getAttribute("mid"));
-		mDTO.setName(request.getParameter("name"));
-		boolean flag=mDAO.update(mDTO);
+		MemberDTO memberDTO=new MemberDTO();
+		memberDTO.setMid((String)session.getAttribute("mid"));
+		memberDTO.setName(request.getParameter("name"));
+		boolean flag=mDAO.update(memberDTO);
 		if(flag) {
-			request.setAttribute("mDTO", mDTO);
+			request.setAttribute("memberDTO", memberDTO);
 		}
 	
 		else {

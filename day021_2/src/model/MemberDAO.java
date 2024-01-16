@@ -18,17 +18,17 @@ public class MemberDAO {
 	private static final String UPDATE="";
 	private static final String DELETE="";
 	
-	private ArrayList<MemberDTO> selectAll(MemberDTO mDTO){
+	private ArrayList<MemberDTO> selectAll(MemberDTO memberDTO){
 		return null;
 	}
-	public MemberDTO selectOne(MemberDTO mDTO){
+	public MemberDTO selectOne(MemberDTO memberDTO){
 		MemberDTO data=null;
 		
 		conn=JDBCUtil.connect();
 		try {
 			pstmt=conn.prepareStatement(SELECTONE);
-			pstmt.setString(1, mDTO.getMid());
-			pstmt.setString(2, mDTO.getMpw());
+			pstmt.setString(1, memberDTO.getMid());
+			pstmt.setString(2, memberDTO.getMpw());
 			ResultSet rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -47,13 +47,13 @@ public class MemberDAO {
 		
 		return data;
 	}
-	private boolean insert(MemberDTO mDTO) {
+	private boolean insert(MemberDTO memberDTO) {
 		return false;
 	}
-	private boolean update(MemberDTO mDTO) {
+	private boolean update(MemberDTO memberDTO) {
 		return false;
 	}
-	private boolean delete(MemberDTO mDTO) {
+	private boolean delete(MemberDTO memberDTO) {
 		return false;
 	}
 

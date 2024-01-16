@@ -61,12 +61,12 @@ public class VIEW {
 	}
 	
 	public MemberDTO login() {
-		MemberDTO mDTO=new MemberDTO();
+		MemberDTO memberDTO=new MemberDTO();
 		System.out.print("ID입력 >> ");
-		mDTO.setMid(sc.next());
+		memberDTO.setMid(sc.next());
 		System.out.print("PW입력 >> ");
-		mDTO.setMpw(sc.next());
-		return mDTO;
+		memberDTO.setMpw(sc.next());
+		return memberDTO;
 	}
 	
 	public void printMenu() {

@@ -35,13 +35,13 @@ public class CTRL {
 					view.printFalse();
 					continue;
 				}
-				MemberDTO mDTO=view.login();
-				mDTO=mDAO.selectOne(mDTO);
-				if(mDTO==null) {
+				MemberDTO memberDTO=view.login();
+				memberDTO=mDAO.selectOne(memberDTO);
+				if(memberDTO==null) {
 					view.printFalse();
 					continue;
 				}
-				loginINFO=mDTO;
+				loginINFO=memberDTO;
 				view.printTrue();
 			}
 			else if(action==2) {

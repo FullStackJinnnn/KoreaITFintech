@@ -69,7 +69,7 @@ public class MemberBean {
 		// 회원가입창 들어갔을때, register.jsp 스스로에게 POST방식으로 전달하기 때문에
 		// 처음 입력안된 상태가 INSERT가 되어버려 cannot insert NULL 에러가 나온다.
 		MemberDAO mDAO = new MemberDAO();
-		MemberDTO mDTO = new MemberDTO();
+		MemberDTO memberDTO = new MemberDTO();
 
 		if (id == null) {
 			msg = "";
@@ -82,16 +82,16 @@ public class MemberBean {
 		System.out.println(parsedDate);
 		java.sql.Date sqlDate = new java.sql.Date(parsedDate.getTime());
 		System.out.println(sqlDate);
-		mDTO.setId(id);
-		mDTO.setPw(pw);
-		mDTO.setName(name);
-		mDTO.setNickname(nickname);
-		mDTO.setBirthday(sqlDate);
-		mDTO.setPh(ph);
-		mDTO.setProfile(profile);
-		mDTO.setGrade(grade);
-		System.out.println(mDTO);
-		boolean flag = mDAO.insert(mDTO);
+		memberDTO.setId(id);
+		memberDTO.setPw(pw);
+		memberDTO.setName(name);
+		memberDTO.setNickname(nickname);
+		memberDTO.setBirthday(sqlDate);
+		memberDTO.setPh(ph);
+		memberDTO.setProfile(profile);
+		memberDTO.setGrade(grade);
+		System.out.println(memberDTO);
+		boolean flag = mDAO.insert(memberDTO);
 		if (!flag) {
 			msg = "<font color='green'>회원가입 실패 :(</font>";
 			return false;
@@ -104,28 +104,28 @@ public class MemberBean {
 
 	public MemberDTO login() {
 		MemberDAO mDAO = new MemberDAO();
-		MemberDTO mDTO = new MemberDTO();
-		mDTO.setSearchCondition("login");
-		mDTO.setId(id);
-		mDTO.setPw(pw);
-		mDTO = mDAO.selectOne(mDTO);
-		if (mDTO == null) {
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setSearchCondition("login");
+		memberDTO.setId(id);
+		memberDTO.setPw(pw);
+		memberDTO = mDAO.selectOne(memberDTO);
+		if (memberDTO == null) {
 			msg = "<font color='red'>로그인 실패</font>";
-			return mDTO;
+			return memberDTO;
 		} else {
 			msg = "<font color='green'로그인성공~ :D</font>";
-			return mDTO;
+			return memberDTO;
 		}
 
 	}
 
 	public MemberDTO myInfo() {
 		MemberDAO mDAO = new MemberDAO();
-		MemberDTO mDTO = new MemberDTO();
-		mDTO.setSearchCondition("userCheck");
-		mDTO.setNickname(nickname);
-		mDTO = mDAO.selectOne(mDTO);
-		return mDTO;
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setSearchCondition("userCheck");
+		memberDTO.setNickname(nickname);
+		memberDTO = mDAO.selectOne(memberDTO);
+		return memberDTO;
 	}
 	
 	
@@ -136,16 +136,16 @@ public class MemberBean {
 			return false;
 		}
 		MemberDAO mDAO = new MemberDAO();
-		MemberDTO mDTO = new MemberDTO();
+		MemberDTO memberDTO = new MemberDTO();
 		MemberDTO data = new MemberDTO();
-		mDTO.setSearchCondition("userCheck");
-		mDTO.setNickname(updateNickname);
-		data = mDAO.selectOne(mDTO);
+		memberDTO.setSearchCondition("userCheck");
+		memberDTO.setNickname(updateNickname);
+		data = mDAO.selectOne(memberDTO);
 		if (data == null) {
-			mDTO.setNickname(nickname);
-			mDTO.setUpdateNickname(updateNickname);
-			mDTO.setSearchCondition("updateNickname");
- 			mDAO.update(mDTO);
+			memberDTO.setNickname(nickname);
+			memberDTO.setUpdateNickname(updateNickname);
+			memberDTO.setSearchCondition("updateNickname");
+ 			mDAO.update(memberDTO);
 			return true;
 		} else {
 			msg = "<font color='red'>중복된 닉네임</font>";
@@ -161,16 +161,16 @@ public class MemberBean {
 			return -1;
 		}
 		MemberDAO mDAO = new MemberDAO();
-		MemberDTO mDTO = new MemberDTO();
+		MemberDTO memberDTO = new MemberDTO();
 		MemberDTO data = new MemberDTO();
-		mDTO.setSearchCondition("userCheck");
-		mDTO.setNickname(nickname);
-		data=mDAO.selectOne(mDTO);
-		mDTO.setPw(pw);
-		if (mDTO.getPw().equals(data.getPw())) {
-			mDTO.setSearchCondition("updatePw");
-			mDTO.setPw(updatePw);
-			boolean flag = mDAO.update(mDTO);
+		memberDTO.setSearchCondition("userCheck");
+		memberDTO.setNickname(nickname);
+		data=mDAO.selectOne(memberDTO);
+		memberDTO.setPw(pw);
+		if (memberDTO.getPw().equals(data.getPw())) {
+			memberDTO.setSearchCondition("updatePw");
+			memberDTO.setPw(updatePw);
+			boolean flag = mDAO.update(memberDTO);
 			if (!flag) {
 				msg = "<font color='red'>틀린 비밀번호</font>";
 				return 0;
@@ -188,11 +188,11 @@ public class MemberBean {
 			return false;
 		}
 		MemberDAO mDAO = new MemberDAO();
-		MemberDTO mDTO = new MemberDTO();
-		mDTO.setSearchCondition("withdraw");
-		mDTO.setNickname(nickname);
-		mDTO.setPw(pw);
-		boolean flag = mDAO.update(mDTO);
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setSearchCondition("withdraw");
+		memberDTO.setNickname(nickname);
+		memberDTO.setPw(pw);
+		boolean flag = mDAO.update(memberDTO);
 		if (!flag) {
 			msg = "<font color='red'>틀린 비밀번호</font>";
 			return false;

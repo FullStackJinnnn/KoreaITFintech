@@ -114,12 +114,12 @@ public class CTRL {
 					commonVIEW.printFalse();
 					continue;
 				}
-				MemberDTO mDTO = new MemberDTO();
-				mDTO.setSearchCondition("관리자체크");
-				mDTO.setMid(presentUser.getMid());
-				mDTO.setGrade(presentUser.getGrade());
-				mDTO = mDAO.selectOne(mDTO);
-				if (mDTO == null) {
+				MemberDTO memberDTO = new MemberDTO();
+				memberDTO.setSearchCondition("관리자체크");
+				memberDTO.setMid(presentUser.getMid());
+				memberDTO.setGrade(presentUser.getGrade());
+				memberDTO = mDAO.selectOne(memberDTO);
+				if (memberDTO == null) {
 					commonVIEW.printFalse();
 					continue;
 				}
@@ -138,40 +138,40 @@ public class CTRL {
 				if (presentUser != null) {
 					continue;
 				}
-				MemberDTO mDTO = new MemberDTO();
-				mDTO.setSearchCondition("중복검사");
+				MemberDTO memberDTO = new MemberDTO();
+				memberDTO.setSearchCondition("중복검사");
 				String mid;
 				while (true) {
 					mid = logoutVIEW.inputIdnPw();
-					mDTO.setMid(mid);
-					mDTO = mDAO.selectOne(mDTO);
-					if (mDTO == null) {
+					memberDTO.setMid(mid);
+					memberDTO = mDAO.selectOne(memberDTO);
+					if (memberDTO == null) {
 						break;
 					}
 					commonVIEW.printFalse();
 				}
 
-				mDTO = new MemberDTO();
-				mDTO.setMid(mid);
-				mDTO.setMpw(logoutVIEW.inputIdnPw());
-				mDTO.setName(logoutVIEW.inputNamenGrade());
-				mDTO.setGrade(logoutVIEW.inputNamenGrade());
-				mDAO.insert(mDTO);
+				memberDTO = new MemberDTO();
+				memberDTO.setMid(mid);
+				memberDTO.setMpw(logoutVIEW.inputIdnPw());
+				memberDTO.setName(logoutVIEW.inputNamenGrade());
+				memberDTO.setGrade(logoutVIEW.inputNamenGrade());
+				mDAO.insert(memberDTO);
 				commonVIEW.printTrue();
 
 			} else if (action == 7) {
 				if (presentUser != null) {
 					continue;
 				}
-				MemberDTO mDTO = new MemberDTO();
-				mDTO.setMid(logoutVIEW.inputIdnPw());
-				mDTO.setMpw(logoutVIEW.inputIdnPw());
-				mDTO.setSearchCondition("로그인");
-				mDTO = mDAO.selectOne(mDTO);
-				if (mDTO == null) {
+				MemberDTO memberDTO = new MemberDTO();
+				memberDTO.setMid(logoutVIEW.inputIdnPw());
+				memberDTO.setMpw(logoutVIEW.inputIdnPw());
+				memberDTO.setSearchCondition("로그인");
+				memberDTO = mDAO.selectOne(memberDTO);
+				if (memberDTO == null) {
 					commonVIEW.printFalse();
 				} else {
-					presentUser = mDTO;
+					presentUser = memberDTO;
 					commonVIEW.printTrue();
 					loginVIEW.hello(presentUser);
 				}
@@ -184,16 +184,16 @@ public class CTRL {
 				if (presentUser == null) {
 					continue;
 				}
-				MemberDTO mDTO = new MemberDTO();
-				mDTO.setMid(presentUser.getMid());
-				mDTO.setMpw(logoutVIEW.inputIdnPw());
-				mDTO.setSearchCondition("로그인");
-				mDTO = mDAO.selectOne(mDTO);
-				if (mDTO == null) {
+				MemberDTO memberDTO = new MemberDTO();
+				memberDTO.setMid(presentUser.getMid());
+				memberDTO.setMpw(logoutVIEW.inputIdnPw());
+				memberDTO.setSearchCondition("로그인");
+				memberDTO = mDAO.selectOne(memberDTO);
+				if (memberDTO == null) {
 					commonVIEW.printFalse();
 				} else {
-					mDTO.setMpw(logoutVIEW.inputIdnPw());
-					mDAO.update(mDTO);
+					memberDTO.setMpw(logoutVIEW.inputIdnPw());
+					mDAO.update(memberDTO);
 					commonVIEW.printTrue();
 					presentUser = null;
 				}

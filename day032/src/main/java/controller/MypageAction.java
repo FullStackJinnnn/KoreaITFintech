@@ -25,12 +25,12 @@ public class MypageAction implements Action {
 		
 		HttpSession session = request.getSession();
 		MemberDAO mDAO=new MemberDAO();
-		MemberDTO mDTO=new MemberDTO();
-		mDTO.setMid((String)session.getAttribute("mid"));
-		mDTO.setSearchCondition("userinfo");
-		mDTO=mDAO.selectOne(mDTO);
-		if(mDTO != null) {
-			request.setAttribute("mDTO", mDTO);
+		MemberDTO memberDTO=new MemberDTO();
+		memberDTO.setMid((String)session.getAttribute("mid"));
+		memberDTO.setSearchCondition("userinfo");
+		memberDTO=mDAO.selectOne(memberDTO);
+		if(memberDTO != null) {
+			request.setAttribute("memberDTO", memberDTO);
 			//response.sendRedirect("controller.jsp?action=main");
 		}
 		//endRedirect() 에서 클라이언트가 이동할 페이지 정보를 response 객체의 헤더값에 넣어둔 뒤 계속 로직을 이어서 수행하기 때문입니다. 
