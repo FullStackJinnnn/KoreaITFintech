@@ -27,7 +27,7 @@ public class MypageAction implements Action {
 		MemberDAO mDAO=new MemberDAO();
 		MemberDTO memberDTO=new MemberDTO();
 		memberDTO.setMid((String)session.getAttribute("mid"));
-		memberDTO.setSearchCondition("userinfo");
+		memberDTO.setSearchCondition("정보출력");
 		memberDTO=mDAO.selectOne(memberDTO);
 		if(memberDTO != null) {
 			request.setAttribute("memberDTO", memberDTO);
